@@ -3,7 +3,6 @@ title: API Reference AloHa
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
   - python
   - javascript
 
@@ -30,20 +29,12 @@ This example API documentation page was created with [Slate](https://github.com/
 
 # Authentication
 
-> To authorize, use this code:
-
 There's no authentication in this project.
 
-# Kittens
+# Raws
 
-## Get All Kittens
+## Get All Raws
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
 
 ```python
 import kittn
