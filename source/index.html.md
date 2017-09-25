@@ -33,14 +33,13 @@ There's no authentication in this project.
 
 # Raws
 
-## Get All Raws
+## Get all Raws filtered by event_id
 
 
 ```python
-import kittn
+import requests
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
+response = requests.get('http://path_to_host/raw_by_event/<event_id>')
 ```
 
 ```shell
