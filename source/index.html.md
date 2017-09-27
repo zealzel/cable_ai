@@ -37,8 +37,11 @@ There's no authentication in this project.
 
 # Raws
 
-## Get all Raws filtered by event_id
+## Get a Specific Raw
 
+```httpie
+http get http://path_to_host/api/raw/<int: rid>
+```
 
 ```python
 import requests
@@ -47,8 +50,7 @@ response = requests.get('http://path_to_host/api/raw/<int: rid>')
 ```
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+curl http://path_to_host/api/raw/<int : rid>
 ```
 
 ```javascript
@@ -61,42 +63,38 @@ let kittens = api.kittens.get();
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+{
+  "acx": 100,
+  "acy": 100,
+  "acz": 102,
+  "event_id": 2,
+  "grx": 90,
+  "gry": 84,
+  "grz": 80,
+  "rid": 33,
+  "sid": 3,
+  "ts_ms": "2017-09-27T16:09:27.241892"
+}
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves specific kittens.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET http://path_to_host/api/raw/rid`
 
-### Query Parameters
+<!-- ### Query Parameters -->
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+<!-- Parameter | Default | Description -->
+<!-- --------- | ------- | ----------- -->
+<!-- include_cats | false | If set to true, the result will also include cats. -->
+<!-- available | true | If set to false, the result will include kittens that have already been adopted. -->
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+<!-- <aside class="success"> -->
+<!-- Remember — a happy kitten is an authenticated kitten! -->
+<!-- </aside> -->
 
-## Get a Specific Kitten
+## Get Filtered Raws
 
 ```ruby
 require 'kittn'
