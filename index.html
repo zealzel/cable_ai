@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;httpie&quot;,&quot;shell&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;python&quot;,&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -211,7 +211,6 @@
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="httpie">httpie</a>
               <a href="#" data-language-name="shell">shell</a>
               <a href="#" data-language-name="python">python</a>
               <a href="#" data-language-name="javascript">javascript</a>
@@ -267,11 +266,14 @@ C&amp;W的45Gbit/s高頻線纜在cabling製程中，因轉盤轉速、張力等�
 本文檔主要即說明後端伺服器所提供之API，提供前端和Gateway使用</p>
 <h1 id='authentication'>Authentication</h1>
 <p>There&#39;s no authentication in this project.</p>
-<h1 id='raws'>Raws</h1><h2 id='get-a-specific-raw'>Get a Specific Raw</h2><pre class="highlight plaintext"><code>http get http://path_to_host/api/raw/&lt;int: rid&gt;
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<h1 id='raws'>Raws</h1><h2 id='get-a-specific-raw'>Get a Specific Raw</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'http://path_to_host/api/raw/&lt;int: rid&gt;'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl http://path_to_host/api/raw/&lt;int : rid&gt;
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'http://path_to_host/api/raw/rid'</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code><span class="k">*</span>using curl<span class="k">*</span>
+curl http://path_to_host/api/raw/rid
+
+<span class="k">*</span>using httpie<span class="k">*</span>
+http get http://path_to_host/api/raw/rid
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
 
 <span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
@@ -450,7 +452,6 @@ C&amp;W的45Gbit/s高頻線纜在cabling製程中，因轉盤轉速、張力等�
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="httpie">httpie</a>
                 <a href="#" data-language-name="shell">shell</a>
                 <a href="#" data-language-name="python">python</a>
                 <a href="#" data-language-name="javascript">javascript</a>
