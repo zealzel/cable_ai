@@ -2,7 +2,6 @@
 title: API Reference AloHa
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - httpie
   - shell
   - python
   - javascript
@@ -39,18 +38,18 @@ There's no authentication in this project.
 
 ## Get a Specific Raw
 
-```httpie
-http get http://path_to_host/api/raw/<int: rid>
-```
-
 ```python
 import requests
 
-response = requests.get('http://path_to_host/api/raw/<int: rid>')
+response = requests.get('http://path_to_host/api/raw/rid')
 ```
 
 ```shell
-curl http://path_to_host/api/raw/<int : rid>
+*using curl*
+curl http://path_to_host/api/raw/rid
+
+*using httpie*
+http get http://path_to_host/api/raw/rid
 ```
 
 ```javascript
