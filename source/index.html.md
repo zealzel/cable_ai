@@ -19,14 +19,17 @@ search: true
 
 # Introduction 簡介
 
-Yes Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+**問題描述**
+C&W的45Gbit/s高頻線纜在cabling製程中，因轉盤轉速、張力等差異，導致在某個時間點絞製出來的線品質不佳
 
-BEEBO---
-真的嗎
+**預期產出**
+一個可以不間斷收集機台數據的簡易資料收集系統
+1. 不間斷紀錄6~24小時的cable生產時的相關量測數據
+2. 具有基本的資料庫系統
+3. 做簡單的數據圖表檢視/時間篩選, 觀察與不良品之關聯性
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+**文檔**
+本文檔主要即說明後端伺服器所提供之API，提供前端和Gateway使用
 
 # Authentication
 
