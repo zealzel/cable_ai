@@ -2,10 +2,10 @@
 title: API Reference AloHa
 
 language_tabs: # must be one of https://git.io/vQNgJ
+  - httpie
   - shell
   - python
   - javascript
-  - httpie
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
@@ -95,13 +95,6 @@ This endpoint retrieves specific kittens.
 <!-- </aside> -->
 
 ## Get Filtered Raws
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
 
 ```python
 import kittn
