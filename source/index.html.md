@@ -10,8 +10,8 @@ toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
-includes:
-  - errors
+<!-- includes: -->
+  <!-- - errors -->
 
 search: true
 ---
@@ -76,7 +76,7 @@ let kittens = api.kittens.get();
 }
 ```
 
-This endpoint retrieves specific kittens.
+This endpoint retrieves a specific raw record.
 
 ### HTTP Request
 
