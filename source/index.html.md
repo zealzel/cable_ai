@@ -5,6 +5,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - shell
   - python
   - javascript
+  - httpie
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
@@ -39,7 +40,7 @@ There's no authentication in this project.
 ```python
 import requests
 
-response = requests.get('http://path_to_host/raw_by_event/<event_id>')
+response = requests.get('http://path_to_host/api/raw/<int: rid>')
 ```
 
 ```shell
