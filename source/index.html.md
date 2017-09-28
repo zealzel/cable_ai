@@ -92,33 +92,65 @@ This endpoint retrieves a specific raw record.
 curl http://path_to_host/raw \
 -H "Content-Type: application/json" \
 -d '{"event_id":2, 
-     "start_datetime":"2017-09-27 17:53:27.123456", 
-     "end_datetimei": "2017-09-27 17:53:27.654321"}'
+     "start_datetime":"2017-09-27 17:53:27.350000", 
+     "end_datetime": "2017-09-27 17:53:27.400000"}'
 
 # using httpie
 http post http://path_to_host/raw \
   event_id:=2 \
-  start_datetime='2017-09-27 15:53:17.123456' \
-  end_datetime='2017-09-27 15:59:30.654321'
+  start_datetime='2017-09-27 17:53:27.350000' \
+  end_datetime='2017-09-27 17:59:27.400000'
 ```
 
 ```python
 import requests
-response = requests.get('http://path_to_host/api/raw/rid')
+json_data = {'event_id':2, 
+             'start_datetime': '2017-09-27 17:53:27.350000',
+             'end_datetime': '2017-09-27 17:53:27.400000'}
+response = requests.get('http://path_to_host/api/raw/rid', json=json_data)
 ```
-
-
 
 > The above command returns JSON structured like this:
 
 ```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
+[
+    {
+        "acx": 105,
+        "acy": 103,
+        "acz": 98,
+        "event_id": 2,
+        "grx": 95,
+        "gry": 101,
+        "grz": 92,
+        "rid": 181,
+        "sid": 1,
+        "ts_ms": "2017-09-27T17:53:27.381438+00:00"
+    },
+    {
+        "acx": 61,
+        "acy": 49,
+        "acz": 48,
+        "event_id": 2,
+        "grx": 29,
+        "gry": 12,
+        "grz": 13,
+        "rid": 182,
+        "sid": 2,
+        "ts_ms": "2017-09-27T17:53:27.381438+00:00"
+    },
+    {
+        "acx": -85,
+        "acy": -72,
+        "acz": -79,
+        "event_id": 2,
+        "grx": -77,
+        "gry": -61,
+        "grz": -49,
+        "rid": 183,
+        "sid": 3,
+        "ts_ms": "2017-09-27T17:53:27.381438+00:00"
+    }
+]
 ```
 
 This endpoint retrieves a specific kitten.
