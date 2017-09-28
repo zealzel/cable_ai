@@ -87,6 +87,27 @@ This endpoint retrieves a specific raw record.
 
 ## Get Filtered Raws
 
+```shell
+# using curl
+curl http://path_to_host/raw \
+-H "Content-Type: application/json" \
+-d '{"event_id":2, 
+     "start_datetime":"2017-09-27 17:53:27.123456", 
+     "end_datetimei": "2017-09-27 17:53:27.654321"}'
+
+# using httpie
+http post http://path_to_host/raw \
+  event_id:=2 \
+  start_datetime='2017-09-27 15:53:17.123456' \
+  end_datetime='2017-09-27 15:59:30.654321'
+```
+
+```python
+import requests
+response = requests.get('http://path_to_host/api/raw/rid')
+```
+
+
 
 > The above command returns JSON structured like this:
 
