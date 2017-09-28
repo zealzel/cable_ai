@@ -361,12 +361,12 @@ http post http://path_to_host/raw <span class="se">\</span>
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
+<p>This endpoint retrieves raws filtered by {event_id, start_datetime, end_datetime}</p>
 
 <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<p><code>POST http://path_to_host/raw</code></p>
+<h3 id='json-parameters'>JSON Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -374,8 +374,16 @@ http post http://path_to_host/raw <span class="se">\</span>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>event_id</td>
+<td>The primary key of the event to retrieve</td>
+</tr>
+<tr>
+<td>start_datetime</td>
+<td>The start datetime of the raws</td>
+</tr>
+<tr>
+<td>end_datetime</td>
+<td>The end datetime of the raws</td>
 </tr>
 </tbody></table>
 <h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
@@ -405,7 +413,7 @@ http post http://path_to_host/raw <span class="se">\</span>
 <p>This endpoint retrieves a specific kitten.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
