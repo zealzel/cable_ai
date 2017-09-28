@@ -91,12 +91,14 @@ This endpoint retrieves a specific raw record.
 # using curl
 curl http://path_to_host/raw \
 -H "Content-Type: application/json" \
--d '{"event_id":2, 
+-d '{"rc_id":1,
+     "event_id":2, 
      "start_datetime":"2017-09-27 17:53:27.350000", 
      "end_datetime": "2017-09-27 17:53:27.400000"}'
 
 # using httpie
 http post http://path_to_host/raw \
+  rc_id:=1 \
   event_id:=2 \
   start_datetime='2017-09-27 17:53:27.350000' \
   end_datetime='2017-09-27 17:59:27.400000'
@@ -104,7 +106,8 @@ http post http://path_to_host/raw \
 
 ```python
 import requests
-json_data = {'event_id':2, 
+json_data = {'rc_id':1,
+             'event_id':2, 
              'start_datetime': '2017-09-27 17:53:27.350000',
              'end_datetime': '2017-09-27 17:53:27.400000'}
 response = requests.get('http://path_to_host/api/raw/rid', json=json_data)
@@ -165,38 +168,12 @@ This endpoint retrieves raws filtered by {event_id, start_datetime, end_datetime
 
 Parameter | Description
 --------- | -----------
+rc_id | The primary key of the recording_config to retrieve
 event_id | The primary key of the event to retrieve
 start_datetime | The start datetime of the raws
 end_datetime | The end datetime of the raws
 
 ## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
 
 > The above command returns JSON structured like this:
 
