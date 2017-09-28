@@ -364,9 +364,9 @@ http post http://path_to_host/raw <span class="se">\</span>
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves raws filtered by {event_id, start_datetime, end_datetime}</p>
+<p>This endpoint retrieves raws filtered by {rc_id, event_id, start_datetime, end_datetime}</p>
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST http://path_to_host/raw</code></p>
 <h3 id='json-parameters'>JSON Parameters</h3>
@@ -402,7 +402,7 @@ http post http://path_to_host/raw <span class="se">\</span>
   </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
+<p>This endpoint deletes a specific raw.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>DELETE http://path_to_host/raw/&lt;rid&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
