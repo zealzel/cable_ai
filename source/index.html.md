@@ -153,19 +153,21 @@ response = requests.get('http://path_to_host/api/raw/rid', json=json_data)
 ]
 ```
 
-This endpoint retrieves a specific kitten.
+This endpoint retrieves raws filtered by {event_id, start_datetime, end_datetime}
 
 <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`POST http://path_to_host/raw`
 
-### URL Parameters
+### JSON Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
+event_id | The primary key of the event to retrieve
+start_datetime | The start datetime of the raws
+end_datetime | The end datetime of the raws
 
 ## Delete a Specific Kitten
 
