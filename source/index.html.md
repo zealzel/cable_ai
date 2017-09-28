@@ -173,7 +173,7 @@ event_id | The primary key of the event to retrieve
 start_datetime | The start datetime of the raws
 end_datetime | The end datetime of the raws
 
-## Delete a Specific Kitten
+## Delete a Specific Raw
 
 > The above command returns JSON structured like this:
 
@@ -188,11 +188,11 @@ This endpoint retrieves a specific kitten.
 
 ### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
+`DELETE http://path_to_host/raw/<rid>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to delete
+ID | The ID of the raw to delete
 
