@@ -4,7 +4,6 @@ title: API Reference AloHa
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
   - python
-  <!-- - javascript -->
 
 <!-- toc_footers: -->
   <!-- - <a href='#'>Sign Up for a Developer Key</a> -->
@@ -38,11 +37,6 @@ There's no authentication in this project.
 
 ## Get a Specific Raw
 
-```python
-import requests
-
-response = requests.get('http://path_to_host/api/raw/rid')
-```
 
 ```shell
 # using curl
@@ -52,10 +46,9 @@ curl http://path_to_host/api/raw/rid
 http get http://path_to_host/api/raw/rid
 ```
 
-```javascript
-const kittn = require('kittn');
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+```python
+import requests
+response = requests.get('http://path_to_host/api/raw/rid')
 ```
 
 > The above command returns JSON structured like this:
@@ -94,24 +87,6 @@ This endpoint retrieves a specific raw record.
 
 ## Get Filtered Raws
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
 
 > The above command returns JSON structured like this:
 
