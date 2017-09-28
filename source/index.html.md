@@ -4,7 +4,7 @@ title: API Reference AloHa
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
   - python
-  - javascript
+  <!-- - javascript -->
 
 <!-- toc_footers: -->
   <!-- - <a href='#'>Sign Up for a Developer Key</a> -->
@@ -45,16 +45,15 @@ response = requests.get('http://path_to_host/api/raw/rid')
 ```
 
 ```shell
-*using curl*
+# using curl
 curl http://path_to_host/api/raw/rid
 
-*using httpie*
+# using httpie
 http get http://path_to_host/api/raw/rid
 ```
 
 ```javascript
 const kittn = require('kittn');
-
 let api = kittn.authorize('meowmeowmeow');
 let kittens = api.kittens.get();
 ```
