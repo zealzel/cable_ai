@@ -301,7 +301,21 @@ http get http://path_to_host/api/raw/rid
 <!-- Remember — a happy kitten is an authenticated kitten! -->
 
 <!-- </aside> -->
-<h2 id='get-filtered-raws'>Get Filtered Raws</h2>
+<h2 id='get-filtered-raws'>Get Filtered Raws</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
+curl http://path_to_host/raw <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="s1">'{"event_id":2, 
+     "start_datetime":"2017-09-27 17:53:27.123456", 
+     "end_datetimei": "2017-09-27 17:53:27.654321"}'</span>
+
+<span class="c"># using httpie</span>
+http post http://path_to_host/raw <span class="se">\</span>
+  event_id:<span class="o">=</span>2 <span class="se">\</span>
+  <span class="nv">start_datetime</span><span class="o">=</span><span class="s1">'2017-09-27 15:53:17.123456'</span> <span class="se">\</span>
+  <span class="nv">end_datetime</span><span class="o">=</span><span class="s1">'2017-09-27 15:59:30.654321'</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'http://path_to_host/api/raw/rid'</span><span class="p">)</span>
+</code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
