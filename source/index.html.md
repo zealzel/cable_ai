@@ -382,3 +382,28 @@ rc_id | The rc_id of the recording_config to delete
 
 ### HTTP Response
 `HTTP/1.0 204 NO CONTENT`
+
+
+
+# Simulator API
+
+## Start Simulator: Begin to Send Data
+
+```shell
+# using httpie
+http post http://path_to_simulator_host/simu/start_event period:=1000 rc_id:=1
+```
+
+### HTTP Request
+`POST http://path_to_simulator_host/simu/start_event`
+
+### JSON Parameters
+
+Parameter | Description
+--------- | -----------
+rc_id | The rc_id of the recording_config to delete
+period | The update period of the simulated data
+
+
+<!-- ### HTTP Response -->
+<!-- `HTTP/1.0 204 NO CONTENT` -->
