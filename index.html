@@ -245,6 +245,9 @@
                   <li>
                     <a href="#list-all-recordingconfigs" class="toc-h2 toc-link" data-title="RecordingConfig">List All RecordingConfigs</a>
                   </li>
+                  <li>
+                    <a href="#insert-a-recording-config-record" class="toc-h2 toc-link" data-title="RecordingConfig">Insert a Recording Config Record</a>
+                  </li>
               </ul>
           </li>
       </div>
@@ -331,7 +334,7 @@ http post http://path_to_host/raw <span class="se">\</span>
              <span class="s">'event_id'</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> 
              <span class="s">'start_datetime'</span><span class="p">:</span> <span class="s">'2017-09-27 17:53:27.350000'</span><span class="p">,</span>
              <span class="s">'end_datetime'</span><span class="p">:</span> <span class="s">'2017-09-27 17:53:27.400000'</span><span class="p">}</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'http://path_to_host/api/raw/rid'</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">json_data</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'http://path_to_host/api/raw/rid'</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">json_data</span><span class="p">)</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -468,13 +471,53 @@ http get http://path_to_host/api/recording_config
   </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
-
-
 </span></code></pre>
 <p>This endpoint lists all recording_config records.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET http://path_to_host/api/recording_config</code></p>
+<h2 id='insert-a-recording-config-record'>Insert a Recording Config Record</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
+curl http://path_to_host/api/recording_config
+
+<span class="c"># using httpie</span>
+http post http://path_to_host/api/recording_config <span class="nv">name</span><span class="o">=</span><span class="s1">'rec_name'</span> <span class="nv">description</span><span class="o">=</span><span class="s1">'...'</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'http://path_to_host/api/recording_config'</span><span class="p">,</span> 
+                    <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s">'name'</span><span class="p">:</span> <span class="s">'rec_name'</span><span class="p">,</span> <span class="s">'description'</span><span class="p">:</span> <span class="s">'...'</span><span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rec_name"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"rc_id"</span><span class="p">:</span><span class="w"> </span><span class="err">rc_id_number</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sensors"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint inserts a new recording_config record.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>POST http://path_to_host/api/recording_config</code></p>
+<h3 id='json-parameters-2'>JSON Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>rc_id</td>
+<td>The primary key of the recording_config to insert</td>
+</tr>
+<tr>
+<td>name</td>
+<td>The name of the recording_config</td>
+</tr>
+<tr>
+<td>description</td>
+<td>The description of the recording_config</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
