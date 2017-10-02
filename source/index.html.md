@@ -294,7 +294,7 @@ response = requests.post('http://path_to_host/api/recording_config',
   "description": "...",
   "events": [],
   "name": "rec_name",
-  "rc_id": rc_id_number,
+  "rc_id": rc_id_new,
   "sensors": []
 }
 ```
