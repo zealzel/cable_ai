@@ -29,6 +29,9 @@ C&W的45Gbit/s高頻線纜在cabling製程中，因轉盤轉速、張力等差�
 **文檔**
 本文檔主要即說明後端伺服器所提供之API，提供前端和Gateway使用
 
+
+![image_schema](images/schema.png)
+
 # Authentication
 
 There's no authentication in this project.
