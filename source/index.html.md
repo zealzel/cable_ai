@@ -261,6 +261,9 @@ This endpoint lists all recording_config records.
 
 `GET http://path_to_host/api/recording_config`
 
+### HTTP Response
+HTTP/1.0 200 OK
+
 
 
 
@@ -312,6 +315,10 @@ Parameter | Description
 rc_id | The primary key of the recording_config to insert (can be omitted)
 name | The name of the recording_config
 description | The description of the recording_config
+
+### HTTP Response
+HTTP/1.0 201 CREATED
+
 
 
 
