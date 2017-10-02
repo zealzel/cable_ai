@@ -478,8 +478,17 @@ http get http://path_to_host/api/recording_config
 <h2 id='insert-a-recording-config-record'>Insert a Recording Config Record</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
 curl http://path_to_host/api/recording_config
 
+curl http://path_to_host/api/recording_config <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="s1">'{"rc_id": rec_id_new,
+     "name": "rec_name",
+     "description": "..."}'</span>
+
 <span class="c"># using httpie</span>
-http post http://path_to_host/api/recording_config <span class="nv">name</span><span class="o">=</span><span class="s1">'rec_name'</span> <span class="nv">description</span><span class="o">=</span><span class="s1">'...'</span>
+http post http://path_to_host/api/recording_config <span class="se">\</span>
+          <span class="nv">rc_id</span><span class="o">=</span>rc_id_new <span class="se">\</span>
+          <span class="nv">name</span><span class="o">=</span><span class="s1">'rec_name'</span> <span class="se">\</span>
+          <span class="nv">description</span><span class="o">=</span><span class="s1">'...'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'http://path_to_host/api/recording_config'</span><span class="p">,</span> 
                     <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s">'name'</span><span class="p">:</span> <span class="s">'rec_name'</span><span class="p">,</span> <span class="s">'description'</span><span class="p">:</span> <span class="s">'...'</span><span class="p">)</span>
@@ -507,7 +516,7 @@ http post http://path_to_host/api/recording_config <span class="nv">name</span><
 </thead><tbody>
 <tr>
 <td>rc_id</td>
-<td>The primary key of the recording_config to insert</td>
+<td>The primary key of the recording_config to insert (can be omitted)</td>
 </tr>
 <tr>
 <td>name</td>
