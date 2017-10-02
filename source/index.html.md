@@ -228,7 +228,7 @@ response = requests.get('http://path_to_host/api/recording_config')
   "num_results": 2,
   "objects": [
     {
-      "description": "test",
+      "description": "test1",
       "events": [
         {
           "end_time": null,
@@ -240,14 +240,41 @@ response = requests.get('http://path_to_host/api/recording_config')
       ],
       "name": "config: 3 sensors",
       "rc_id": 1,
-      "sensors": []
+      "sensors": [
+        {
+          "img_ref": null,
+          "loc_orient": "loc1",
+          "sid": 1
+        },
+        {
+          "img_ref": null,
+          "loc_orient": "loc2",
+          "sid": 2
+        },
+        {
+          "img_ref": null,
+          "loc_orient": "loc3",
+          "sid": 3
+        }
+      ]
     },
     {
-      "description": "test",
+      "description": "test2",
       "events": [],
       "name": "config: 2 sensors",
       "rc_id": 2,
-      "sensors": []
+      "sensors": [
+        {
+          "img_ref": null,
+          "loc_orient": "loc3",
+          "sid": 3
+        },
+        {
+          "img_ref": null,
+          "loc_orient": "loc5",
+          "sid": 5
+        }
+      ]
     }
   ],
   "page": 1,
