@@ -253,6 +253,14 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#simulator-api" class="toc-h1 toc-link" data-title="Simulator API">Simulator API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#start-simulator-begin-to-send-data" class="toc-h2 toc-link" data-title="Simulator API">Start Simulator: Begin to Send Data</a>
+                  </li>
+              </ul>
+          </li>
       </div>
     </div>
     <div class="page-wrapper">
@@ -589,6 +597,30 @@ http delete http://path_to_host/api/recording_config/3
 </tbody></table>
 <h3 id='http-response-3'>HTTP Response</h3>
 <p><code>HTTP/1.0 204 NO CONTENT</code></p>
+<h1 id='simulator-api'>Simulator API</h1><h2 id='start-simulator-begin-to-send-data'>Start Simulator: Begin to Send Data</h2><pre class="highlight shell tab-shell"><code><span class="c"># using httpie</span>
+http post http://path_to_simulator_host/simu/start_event period:<span class="o">=</span>1000 rc_id:<span class="o">=</span>1
+</code></pre><h3 id='http-request-7'>HTTP Request</h3>
+<p><code>POST http://path_to_simulator_host/simu/start_event</code></p>
+<h3 id='json-parameters-3'>JSON Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>rc_id</td>
+<td>The rc_id of the recording_config to delete</td>
+</tr>
+<tr>
+<td>period</td>
+<td>The update period of the simulated data</td>
+</tr>
+</tbody></table>
+
+<!-- ### HTTP Response -->
+
+<!-- `HTTP/1.0 204 NO CONTENT` -->
 
       </div>
       <div class="dark-box">
