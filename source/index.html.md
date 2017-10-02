@@ -258,7 +258,6 @@ response = requests.get('http://path_to_host/api/recording_config')
 This endpoint lists all recording_config records.
 
 ### HTTP Request
-
 `GET http://path_to_host/api/recording_config`
 
 ### HTTP Response
@@ -305,7 +304,6 @@ response = requests.post('http://path_to_host/api/recording_config',
 This endpoint inserts a new recording_config record.
 
 ### HTTP Request
-
 `POST http://path_to_host/api/recording_config`
 
 ### JSON Parameters
@@ -346,7 +344,6 @@ response = requests.delete('http://path_to_host/api/recording_config/3')
 This endpoint deletes a recording_config record.
 
 ### HTTP Request
-
 `DELETE http://path_to_host/api/recording_config/3`
 
 ### URL Parameters
