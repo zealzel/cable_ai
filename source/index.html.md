@@ -312,3 +312,43 @@ Parameter | Description
 rc_id | The primary key of the recording_config to insert (can be omitted)
 name | The name of the recording_config
 description | The description of the recording_config
+
+
+
+## Delete a Recording Config Record
+
+```shell
+# using curl
+curl http://path_to_host/api/recording_config
+
+# using httpie
+http delete http://path_to_host/api/recording_config/3
+```
+
+```python
+import requests
+response = requests.delete('http://path_to_host/api/recording_config/3')
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{}
+```
+
+This endpoint deletes a recording_config record.
+
+### HTTP Request
+
+`DELETE http://path_to_host/api/recording_config/3`
+
+### JSON Parameters
+
+Parameter | Description
+--------- | -----------
+rc_id | The primary key of the recording_config to delete
+
+
+### HTTP Response
+
+`HTTP/1.0 204 NO CONTENT`
