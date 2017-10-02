@@ -319,7 +319,7 @@ description | The description of the recording_config
 
 ```shell
 # using curl
-curl http://path_to_host/api/recording_config
+curl -X DELETE http://path_to_host/api/recording_config/3
 
 # using httpie
 http delete http://path_to_host/api/recording_config/3
@@ -342,11 +342,11 @@ This endpoint deletes a recording_config record.
 
 `DELETE http://path_to_host/api/recording_config/3`
 
-### JSON Parameters
+### URL Parameters
 
 Parameter | Description
 --------- | -----------
-rc_id | The primary key of the recording_config to delete
+rc_id | The rc_id of the recording_config to delete
 
 
 ### HTTP Response
