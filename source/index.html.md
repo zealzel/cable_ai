@@ -270,8 +270,17 @@ This endpoint lists all recording_config records.
 # using curl
 curl http://path_to_host/api/recording_config
 
+curl http://path_to_host/api/recording_config \
+-H "Content-Type: application/json" \
+-d '{"rc_id": rec_id_new,
+     "name": "rec_name",
+     "description": "..."}'
+
 # using httpie
-http post http://path_to_host/api/recording_config name='rec_name' description='...'
+http post http://path_to_host/api/recording_config \
+          rc_id=rc_id_new \
+          name='rec_name' \
+          description='...'
 ```
 
 ```python
@@ -302,6 +311,6 @@ This endpoint inserts a new recording_config record.
 
 Parameter | Description
 --------- | -----------
-rc_id | The primary key of the recording_config to insert
+rc_id | The primary key of the recording_config to insert (can be omitted)
 name | The name of the recording_config
 description | The description of the recording_config
