@@ -268,8 +268,6 @@ This endpoint lists all recording_config records.
 
 ```shell
 # using curl
-curl http://path_to_host/api/recording_config
-
 curl http://path_to_host/api/recording_config \
 -H "Content-Type: application/json" \
 -d '{"rc_id": rec_id_new,
