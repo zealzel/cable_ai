@@ -529,7 +529,7 @@ http post http://path_to_host/api/recording_config <span class="se">\</span>
 </tr>
 </tbody></table>
 <h2 id='delete-a-recording-config-record'>Delete a Recording Config Record</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
-curl http://path_to_host/api/recording_config
+curl -X DELETE http://path_to_host/api/recording_config/3
 
 <span class="c"># using httpie</span>
 http delete http://path_to_host/api/recording_config/3
@@ -544,7 +544,7 @@ http delete http://path_to_host/api/recording_config/3
 <p>This endpoint deletes a recording_config record.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
 <p><code>DELETE http://path_to_host/api/recording_config/3</code></p>
-<h3 id='json-parameters-3'>JSON Parameters</h3>
+<h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -553,7 +553,7 @@ http delete http://path_to_host/api/recording_config/3
 </thead><tbody>
 <tr>
 <td>rc_id</td>
-<td>The primary key of the recording_config to delete</td>
+<td>The rc_id of the recording_config to delete</td>
 </tr>
 </tbody></table>
 <h3 id='http-response'>HTTP Response</h3>
