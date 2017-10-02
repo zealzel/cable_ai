@@ -30,6 +30,7 @@ C&W的45Gbit/s高頻線纜在cabling製程中，因轉盤轉速、張力等差�
 本文檔主要即說明後端伺服器所提供之API，提供前端和Gateway使用
 
 
+**資料庫Schema**
 ![image_schema](images/schema.png)
 
 # Authentication
@@ -113,7 +114,7 @@ json_data = {'rc_id':1,
              'event_id':2, 
              'start_datetime': '2017-09-27 17:53:27.350000',
              'end_datetime': '2017-09-27 17:53:27.400000'}
-response = requests.get('http://path_to_host/api/raw/rid', json=json_data)
+response = requests.post('http://path_to_host/api/raw/rid', json=json_data)
 ```
 
 > The above command returns JSON structured like this:
@@ -252,9 +253,6 @@ response = requests.get('http://path_to_host/api/recording_config')
   "page": 1,
   "total_pages": 1
 }
-
-
-
 ```
 
 This endpoint lists all recording_config records.
@@ -263,3 +261,47 @@ This endpoint lists all recording_config records.
 
 `GET http://path_to_host/api/recording_config`
 
+
+
+
+## Insert a Recording Config Record
+
+```shell
+# using curl
+curl http://path_to_host/api/recording_config
+
+# using httpie
+http post http://path_to_host/api/recording_config name='rec_name' description='...'
+```
+
+```python
+import requests
+response = requests.post('http://path_to_host/api/recording_config', 
+                    json={'name': 'rec_name', 'description': '...')
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "description": "...",
+  "events": [],
+  "name": "rec_name",
+  "rc_id": rc_id_number,
+  "sensors": []
+}
+```
+
+This endpoint inserts a new recording_config record.
+
+### HTTP Request
+
+`POST http://path_to_host/api/recording_config`
+
+### JSON Parameters
+
+Parameter | Description
+--------- | -----------
+rc_id | The primary key of the recording_config to insert
+name | The name of the recording_config
+description | The description of the recording_config
