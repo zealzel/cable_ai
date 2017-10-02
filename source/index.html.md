@@ -1,5 +1,5 @@
 ---
-title: API Reference AloHa
+title: API Reference for Libra Project
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
@@ -195,4 +195,68 @@ This endpoint deletes a specific raw.
 Parameter | Description
 --------- | -----------
 ID | The ID of the raw to delete
+
+
+
+
+# RecordingConfig
+
+## List All RecordingConfigs
+
+
+```shell
+# using curl
+curl http://path_to_host/api/recording_config
+
+# using httpie
+http get http://path_to_host/api/recording_config
+```
+
+```python
+import requests
+response = requests.get('http://path_to_host/api/recording_config')
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "num_results": 2,
+  "objects": [
+    {
+      "description": "test",
+      "events": [
+        {
+          "end_time": null,
+          "event_id": 1,
+          "rc_id": 1,
+          "remark": "sent by simulator",
+          "start_time": null
+        }
+      ],
+      "name": "config: 3 sensors",
+      "rc_id": 1,
+      "sensors": []
+    },
+    {
+      "description": "test",
+      "events": [],
+      "name": "config: 2 sensors",
+      "rc_id": 2,
+      "sensors": []
+    }
+  ],
+  "page": 1,
+  "total_pages": 1
+}
+
+
+
+```
+
+This endpoint lists all recording_config records.
+
+### HTTP Request
+
+`GET http://path_to_host/api/recording_config'
 
