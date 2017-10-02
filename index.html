@@ -248,6 +248,9 @@
                   <li>
                     <a href="#insert-a-recording-config-record" class="toc-h2 toc-link" data-title="RecordingConfig">Insert a Recording Config Record</a>
                   </li>
+                  <li>
+                    <a href="#delete-a-recording-config-record" class="toc-h2 toc-link" data-title="RecordingConfig">Delete a Recording Config Record</a>
+                  </li>
               </ul>
           </li>
       </div>
@@ -525,6 +528,36 @@ http post http://path_to_host/api/recording_config <span class="se">\</span>
 <td>The description of the recording_config</td>
 </tr>
 </tbody></table>
+<h2 id='delete-a-recording-config-record'>Delete a Recording Config Record</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
+curl http://path_to_host/api/recording_config
+
+<span class="c"># using httpie</span>
+http delete http://path_to_host/api/recording_config/3
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s">'http://path_to_host/api/recording_config/3'</span><span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
+</span></code></pre>
+<p>This endpoint deletes a recording_config record.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>DELETE http://path_to_host/api/recording_config/3</code></p>
+<h3 id='json-parameters-3'>JSON Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>rc_id</td>
+<td>The primary key of the recording_config to delete</td>
+</tr>
+</tbody></table>
+<h3 id='http-response'>HTTP Response</h3>
+<p><code>HTTP/1.0 204 NO CONTENT</code></p>
 
       </div>
       <div class="dark-box">
