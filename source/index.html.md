@@ -258,5 +258,5 @@ This endpoint lists all recording_config records.
 
 ### HTTP Request
 
-`GET http://path_to_host/api/recording_config'
+`GET http://path_to_host/api/recording_config`
 
