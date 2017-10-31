@@ -259,6 +259,9 @@
                   <li>
                     <a href="#list-all-sensors" class="toc-h2 toc-link" data-title="Sensor">List All Sensors</a>
                   </li>
+                  <li>
+                    <a href="#insert-a-sensor-record" class="toc-h2 toc-link" data-title="Sensor">Insert a Sensor Record</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -617,17 +620,82 @@ http get http://path_to_host/api/sensor
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rec_name"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"rc_id"</span><span class="p">:</span><span class="w"> </span><span class="err">rc_id_new</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"sensors"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="s2">"num_results"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"objects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"img_ref"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"loc_orient"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loc1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"img_ref"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"loc_orient"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loc2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"img_ref"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"loc_orient"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loc3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h1 id='simulator-api'>Simulator API</h1><h2 id='start-simulator-begin-to-send-data'>Start Simulator: Begin to Send Data</h2><pre class="highlight shell tab-shell"><code><span class="c"># using httpie</span>
-http post http://path_to_simulator_host/simu/start_event period:<span class="o">=</span>1000 rc_id:<span class="o">=</span>1
-</code></pre><h3 id='http-request-7'>HTTP Request</h3>
-<p><code>POST http://path_to_simulator_host/simu/start_event</code></p>
+</span></code></pre>
+<p>This endpoint lists all sensor records.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET http://path_to_host/api/sensor</code></p>
+<h3 id='http-response-4'>HTTP Response</h3>
+<p><code>HTTP/1.0 200 OK</code></p>
+<h2 id='insert-a-sensor-record'>Insert a Sensor Record</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
+curl http://path_to_host/api/sensor <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="s1">'{"loc_orient": some_description,
+     "img_ref": img_url_to_use}'</span>
+
+<span class="c"># using httpie</span>
+http post http://path_to_host/api/sensor <span class="se">\</span>
+          <span class="nv">loc_orient</span><span class="o">=</span>some_description <span class="se">\</span>
+          <span class="nv">img_ref</span><span class="o">=</span>img_url_to_use
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'http://path_to_host/api/sensor'</span><span class="p">,</span> 
+                    <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s">'loc_orient'</span><span class="p">:</span> <span class="s">'some_description'</span><span class="p">,</span> <span class="s">'img_ref'</span><span class="p">:</span> <span class="n">img_url_to_use</span><span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"img_ref"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"loc_orient"</span><span class="p">:</span><span class="w"> </span><span class="err">description</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="err">sid_new</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint inserts a new sensor record.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>POST http://path_to_host/api/sensor</code></p>
 <h3 id='json-parameters-3'>JSON Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>loc_orient</td>
+<td>The description of the sensor</td>
+</tr>
+<tr>
+<td>img_ref</td>
+<td>The image url location</td>
+</tr>
+</tbody></table>
+<h3 id='http-response-5'>HTTP Response</h3>
+<p><code>HTTP/1.0 201 CREATED</code></p>
+<h1 id='simulator-api'>Simulator API</h1><h2 id='start-simulator-begin-to-send-data'>Start Simulator: Begin to Send Data</h2><pre class="highlight shell tab-shell"><code><span class="c"># using httpie</span>
+http post http://path_to_simulator_host/simu/start_event period:<span class="o">=</span>1000 rc_id:<span class="o">=</span>1
+</code></pre><h3 id='http-request-9'>HTTP Request</h3>
+<p><code>POST http://path_to_simulator_host/simu/start_event</code></p>
+<h3 id='json-parameters-4'>JSON Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
