@@ -409,14 +409,86 @@ response = requests.get('http://path_to_host/api/sensor')
 
 ```json
 {
-  "description": "...",
-  "events": [],
-  "name": "rec_name",
-  "rc_id": rc_id_new,
-  "sensors": []
+  "num_results": 3,
+  "objects": [
+    {
+      "img_ref": null,
+      "loc_orient": "loc1",
+      "sid": 1
+    },
+    {
+      "img_ref": null,
+      "loc_orient": "loc2",
+      "sid": 2
+    },
+    {
+      "img_ref": null,
+      "loc_orient": "loc3",
+      "sid": 3
+    }
+  ],
+  "page": 1,
+  "total_pages": 1
 }
 ```
 
+This endpoint lists all sensor records.
+
+### HTTP Request
+`GET http://path_to_host/api/sensor`
+
+### HTTP Response
+`HTTP/1.0 200 OK`
+
+
+
+
+
+## Insert a Sensor Record
+
+```shell
+# using curl
+curl http://path_to_host/api/sensor \
+-H "Content-Type: application/json" \
+-d '{"loc_orient": some_description,
+     "img_ref": img_url_to_use}'
+
+# using httpie
+http post http://path_to_host/api/sensor \
+          loc_orient=some_description \
+          img_ref=img_url_to_use
+```
+
+```python
+import requests
+response = requests.post('http://path_to_host/api/sensor', 
+                    json={'loc_orient': 'some_description', 'img_ref': img_url_to_use)
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "img_ref": null,
+  "loc_orient": description,
+  "sid": sid_new
+}
+```
+
+This endpoint inserts a new sensor record.
+
+### HTTP Request
+`POST http://path_to_host/api/sensor`
+
+### JSON Parameters
+
+Parameter | Description
+--------- | -----------
+loc_orient | The description of the sensor
+img_ref | The image url location
+
+### HTTP Response
+`HTTP/1.0 201 CREATED`
 
 
 
