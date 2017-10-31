@@ -39,8 +39,8 @@ There's no authentication in this project.
 
 # Raws
 
+<!-- =============================================================== -->
 ## Get a Specific Raw
-
 
 ```shell
 # using curl
@@ -78,17 +78,8 @@ This endpoint retrieves a specific raw record.
 
 `GET http://path_to_host/api/raw/rid`
 
-<!-- ### Query Parameters -->
 
-<!-- Parameter | Default | Description -->
-<!-- --------- | ------- | ----------- -->
-<!-- include_cats | false | If set to true, the result will also include cats. -->
-<!-- available | true | If set to false, the result will include kittens that have already been adopted. -->
-
-<!-- <aside class="success"> -->
-<!-- Remember — a happy kitten is an authenticated kitten! -->
-<!-- </aside> -->
-
+<!-- =============================================================== -->
 ## Get Filtered Raws
 
 ```shell
@@ -177,6 +168,8 @@ event_id | The primary key of the event to retrieve
 start_datetime | The start datetime of the raws
 end_datetime | The end datetime of the raws
 
+
+<!-- =============================================================== -->
 ## Delete a Specific Raw
 
 > The above command returns JSON structured like this:
@@ -205,8 +198,8 @@ ID | The ID of the raw to delete
 
 # RecordingConfig
 
+<!-- =============================================================== -->
 ## List All RecordingConfigs
-
 
 ```shell
 # using curl
@@ -292,7 +285,7 @@ This endpoint lists all recording_config records.
 
 
 
-
+<!-- =============================================================== -->
 ## Insert a Recording Config Record
 
 ```shell
@@ -346,7 +339,7 @@ description | The description of the recording_config
 
 
 
-
+<!-- =============================================================== -->
 ## Delete a Recording Config Record
 
 ```shell
@@ -389,8 +382,8 @@ rc_id | The rc_id of the recording_config to delete
 
 # Sensor
 
+<!-- =============================================================== -->
 ## List All Sensors
-
 
 ```shell
 # using curl
@@ -444,6 +437,7 @@ This endpoint lists all sensor records.
 
 
 
+<!-- =============================================================== -->
 ## Insert a Sensor Record
 
 ```shell
@@ -492,9 +486,84 @@ img_ref | The image url location
 
 
 
+<!-- =============================================================== -->
+## Delete a Specific Sensor
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": 2,
+  "deleted" : ":("
+}
+```
+
+This endpoint deletes a specific raw.
+
+### HTTP Request
+
+`DELETE http://path_to_host/sensor/<sid>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the sensor to delete
+
+
+
+<!-- =============================================================== -->
+## Update a Sensor Record
+
+```shell
+# using curl
+curl http://path_to_host/api/sensor \
+-H "Content-Type: application/json" \
+-d '{"loc_orient": modified_description,
+     "img_ref": modified_img_ref}'
+
+# using httpie
+http post http://path_to_host/api/sensor/sid \
+          loc_orient=modified_description \
+          img_ref=modified_imf_ref
+```
+
+```python
+import requests
+response = requests.post('http://path_to_host/api/sensor/sid', 
+                    json={'loc_orient': modified_description, 'img_ref': modified_img_ref)
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "img_ref": modified_img_ref,
+  "loc_orient": modified_description,
+  "sid": sid_to_be_modified
+}
+```
+
+This endpoint updates a existed sensor record.
+
+### HTTP Request
+`POST http://path_to_host/api/sensor/sid`
+
+### JSON Parameters
+
+Parameter | Description
+--------- | -----------
+loc_orient | The modified description of the sensor
+img_ref | The modified image url location
+
+### HTTP Response
+`HTTP/1.0 201 CREATED`
+
+
 
 # Simulator API
 
+<!-- =============================================================== -->
 ## Start Simulator: Begin to Send Data
 
 ```shell
