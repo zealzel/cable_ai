@@ -313,7 +313,6 @@ response = requests.post('http://path_to_host/api/recording_config',
 > The above command returns JSON structured like this:
 
 ```json
-ex:
 {
   "description": "test3",
   "events": [],
@@ -346,7 +345,7 @@ Parameter | Description
 rc_id | The primary key of the recording_config to insert (can be omitted)
 name | The name of the recording_config
 description | The description of the recording_config
-sesnors | Array of sensors
+sensors | Array of sensors
 
 ### HTTP Response
 `HTTP/1.0 201 CREATED`
