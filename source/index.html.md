@@ -286,38 +286,51 @@ This endpoint lists all recording_config records.
 
 
 <!-- =============================================================== -->
-## Insert a Recording Config Record
+## Insert a Recording Config Record with Sensors
 
 ```shell
 # using curl
 curl http://path_to_host/api/recording_config \
 -H "Content-Type: application/json" \
--d '{"rc_id": rec_id_new,
-     "name": "rec_name",
+-d '{"name": "rec_name",
      "description": "..."}'
 
 # using httpie
 http post http://path_to_host/api/recording_config \
-          rc_id=rc_id_new \
           name='rec_name' \
-          description='...'
+          description='...' \
+          sensors:='[{"sid": sid1}, {"sid": sid2}]'
 ```
 
 ```python
 import requests
 response = requests.post('http://path_to_host/api/recording_config', 
-                    json={'name': 'rec_name', 'description': '...')
+                         json={'name': 'rec_name', 
+                               'description': '...', 
+                               'sensors': [{'sid': sid1}, {'sid': sid2}]})
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
+ex:
 {
-  "description": "...",
+  "description": "test3",
   "events": [],
-  "name": "rec_name",
-  "rc_id": rc_id_new,
-  "sensors": []
+  "name": "config test1",
+  "rc_id": 3,
+  "sensors": [
+    {
+      "img_ref": null,
+      "loc_orient": "loc1",
+      "sid": 1
+    },
+    {
+      "img_ref": null,
+      "loc_orient": "loc2",
+      "sid": 2
+    }
+  ]
 }
 ```
 
