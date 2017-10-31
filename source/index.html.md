@@ -339,6 +339,53 @@ description | The description of the recording_config
 
 
 
+
+<!-- =============================================================== -->
+## Update a Existed Recording Config Record
+
+```shell
+# using curl
+curl http://path_to_host/api/recording_config/rc_id \
+-H "Content-Type: application/json" \
+-d '{"name": modified_name,
+     "description": modified_description}'
+
+# using httpie
+http post http://path_to_host/api/recording_config/rc_id \
+          name=modified_name \
+          description=modified_description
+```
+
+```python
+import requests
+response = requests.post('http://path_to_host/api/recording_config/rc_id', 
+                    json={'name': modified_name, 'description': modified_description)
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "description": modified_description,
+  "events": [],
+  "name": modified_name,
+  "rc_id": rc_id_new,
+  "sensors": []
+}
+```
+
+This endpoint updates a existed recording_config record.
+
+### HTTP Request
+`POST http://path_to_host/api/recording_config/rc_id`
+
+### JSON Parameters
+Parameter | Description
+--------- | -----------
+name | The name of the recording_config
+description | The description of the recording_config
+
+
 <!-- =============================================================== -->
 ## Delete a Recording Config Record
 
