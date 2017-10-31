@@ -385,6 +385,42 @@ rc_id | The rc_id of the recording_config to delete
 
 
 
+
+
+# Sensor
+
+## List All Sensors
+
+
+```shell
+# using curl
+curl http://path_to_host/api/sensor
+
+# using httpie
+http get http://path_to_host/api/sensor
+```
+
+```python
+import requests
+response = requests.get('http://path_to_host/api/sensor')
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "description": "...",
+  "events": [],
+  "name": "rec_name",
+  "rc_id": rc_id_new,
+  "sensors": []
+}
+```
+
+
+
+
+
 # Simulator API
 
 ## Start Simulator: Begin to Send Data
@@ -402,7 +438,7 @@ http post http://path_to_simulator_host/simu/start_event period:=1000 rc_id:=1
 Parameter | Description
 --------- | -----------
 rc_id | The rc_id of the recording_config to delete
-period | The update period of the simulated data
+period | The update period of the simulated data (milli-second)
 
 
 <!-- ### HTTP Response -->
