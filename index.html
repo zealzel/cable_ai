@@ -262,6 +262,12 @@
                   <li>
                     <a href="#insert-a-sensor-record" class="toc-h2 toc-link" data-title="Sensor">Insert a Sensor Record</a>
                   </li>
+                  <li>
+                    <a href="#delete-a-specific-sensor" class="toc-h2 toc-link" data-title="Sensor">Delete a Specific Sensor</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-sensor-record" class="toc-h2 toc-link" data-title="Sensor">Update a Sensor Record</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -294,7 +300,9 @@ C&amp;W的45Gbit/s高頻線纜在cabling製程中，因轉盤轉速、張力等�
 <img src="images/schema.png" alt="image_schema" /></p>
 <h1 id='authentication'>Authentication</h1>
 <p>There&#39;s no authentication in this project.</p>
-<h1 id='raws'>Raws</h1><h2 id='get-a-specific-raw'>Get a Specific Raw</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
+<h1 id='raws'>Raws</h1>
+<!-- =============================================================== -->
+<h2 id='get-a-specific-raw'>Get a Specific Raw</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
 curl http://path_to_host/api/raw/rid
 
 <span class="c"># using httpie</span>
@@ -322,21 +330,7 @@ http get http://path_to_host/api/raw/rid
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET http://path_to_host/api/raw/rid</code></p>
 
-<!-- ### Query Parameters -->
-
-<!-- Parameter | Default | Description -->
-
-<!-- --------- | ------- | ----------- -->
-
-<!-- include_cats | false | If set to true, the result will also include cats. -->
-
-<!-- available | true | If set to false, the result will include kittens that have already been adopted. -->
-
-<!-- <aside class="success"> -->
-
-<!-- Remember — a happy kitten is an authenticated kitten! -->
-
-<!-- </aside> -->
+<!-- =============================================================== -->
 <h2 id='get-filtered-raws'>Get Filtered Raws</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
 curl http://path_to_host/raw <span class="se">\</span>
 -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -429,6 +423,8 @@ http post http://path_to_host/raw <span class="se">\</span>
 <td>The end datetime of the raws</td>
 </tr>
 </tbody></table>
+
+<!-- =============================================================== -->
 <h2 id='delete-a-specific-raw'>Delete a Specific Raw</h2>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -453,7 +449,9 @@ http post http://path_to_host/raw <span class="se">\</span>
 <td>The ID of the raw to delete</td>
 </tr>
 </tbody></table>
-<h1 id='recordingconfig'>RecordingConfig</h1><h2 id='list-all-recordingconfigs'>List All RecordingConfigs</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
+<h1 id='recordingconfig'>RecordingConfig</h1>
+<!-- =============================================================== -->
+<h2 id='list-all-recordingconfigs'>List All RecordingConfigs</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
 curl http://path_to_host/api/recording_config
 
 <span class="c"># using httpie</span>
@@ -526,6 +524,8 @@ http get http://path_to_host/api/recording_config
 <p><code>GET http://path_to_host/api/recording_config</code></p>
 <h3 id='http-response'>HTTP Response</h3>
 <p><code>HTTP/1.0 200 OK</code></p>
+
+<!-- =============================================================== -->
 <h2 id='insert-a-recording-config-record'>Insert a Recording Config Record</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
 curl http://path_to_host/api/recording_config <span class="se">\</span>
 -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -578,6 +578,8 @@ http post http://path_to_host/api/recording_config <span class="se">\</span>
 </tbody></table>
 <h3 id='http-response-2'>HTTP Response</h3>
 <p><code>HTTP/1.0 201 CREATED</code></p>
+
+<!-- =============================================================== -->
 <h2 id='delete-a-recording-config-record'>Delete a Recording Config Record</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
 curl -X DELETE http://path_to_host/api/recording_config/3
 
@@ -608,7 +610,9 @@ http delete http://path_to_host/api/recording_config/3
 </tbody></table>
 <h3 id='http-response-3'>HTTP Response</h3>
 <p><code>HTTP/1.0 204 NO CONTENT</code></p>
-<h1 id='sensor'>Sensor</h1><h2 id='list-all-sensors'>List All Sensors</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
+<h1 id='sensor'>Sensor</h1>
+<!-- =============================================================== -->
+<h2 id='list-all-sensors'>List All Sensors</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
 curl http://path_to_host/api/sensor
 
 <span class="c"># using httpie</span>
@@ -647,6 +651,8 @@ http get http://path_to_host/api/sensor
 <p><code>GET http://path_to_host/api/sensor</code></p>
 <h3 id='http-response-4'>HTTP Response</h3>
 <p><code>HTTP/1.0 200 OK</code></p>
+
+<!-- =============================================================== -->
 <h2 id='insert-a-sensor-record'>Insert a Sensor Record</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
 curl http://path_to_host/api/sensor <span class="se">\</span>
 -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -691,11 +697,85 @@ http post http://path_to_host/api/sensor <span class="se">\</span>
 </tbody></table>
 <h3 id='http-response-5'>HTTP Response</h3>
 <p><code>HTTP/1.0 201 CREATED</code></p>
-<h1 id='simulator-api'>Simulator API</h1><h2 id='start-simulator-begin-to-send-data'>Start Simulator: Begin to Send Data</h2><pre class="highlight shell tab-shell"><code><span class="c"># using httpie</span>
-http post http://path_to_simulator_host/simu/start_event period:<span class="o">=</span>1000 rc_id:<span class="o">=</span>1
-</code></pre><h3 id='http-request-9'>HTTP Request</h3>
-<p><code>POST http://path_to_simulator_host/simu/start_event</code></p>
+
+<!-- =============================================================== -->
+<h2 id='delete-a-specific-sensor'>Delete a Specific Sensor</h2>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint deletes a specific raw.</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>DELETE http://path_to_host/sensor/&lt;sid&gt;</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the sensor to delete</td>
+</tr>
+</tbody></table>
+
+<!-- =============================================================== -->
+<h2 id='update-a-sensor-record'>Update a Sensor Record</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
+curl http://path_to_host/api/sensor <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="s1">'{"loc_orient": modified_description,
+     "img_ref": modified_img_ref}'</span>
+
+<span class="c"># using httpie</span>
+http post http://path_to_host/api/sensor/sid <span class="se">\</span>
+          <span class="nv">loc_orient</span><span class="o">=</span>modified_description <span class="se">\</span>
+          <span class="nv">img_ref</span><span class="o">=</span>modified_imf_ref
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'http://path_to_host/api/sensor/sid'</span><span class="p">,</span> 
+                    <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s">'loc_orient'</span><span class="p">:</span> <span class="n">modified_description</span><span class="p">,</span> <span class="s">'img_ref'</span><span class="p">:</span> <span class="n">modified_img_ref</span><span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"img_ref"</span><span class="p">:</span><span class="w"> </span><span class="err">modified_img_ref</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"loc_orient"</span><span class="p">:</span><span class="w"> </span><span class="err">modified_description</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="err">sid_to_be_modified</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint updates a existed sensor record.</p>
+<h3 id='http-request-10'>HTTP Request</h3>
+<p><code>POST http://path_to_host/api/sensor/sid</code></p>
 <h3 id='json-parameters-4'>JSON Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>loc_orient</td>
+<td>The modified description of the sensor</td>
+</tr>
+<tr>
+<td>img_ref</td>
+<td>The modified image url location</td>
+</tr>
+</tbody></table>
+<h3 id='http-response-6'>HTTP Response</h3>
+<p><code>HTTP/1.0 201 CREATED</code></p>
+<h1 id='simulator-api'>Simulator API</h1>
+<!-- =============================================================== -->
+<h2 id='start-simulator-begin-to-send-data'>Start Simulator: Begin to Send Data</h2><pre class="highlight shell tab-shell"><code><span class="c"># using httpie</span>
+http post http://path_to_simulator_host/simu/start_event period:<span class="o">=</span>1000 rc_id:<span class="o">=</span>1
+</code></pre><h3 id='http-request-11'>HTTP Request</h3>
+<p><code>POST http://path_to_simulator_host/simu/start_event</code></p>
+<h3 id='json-parameters-5'>JSON Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
