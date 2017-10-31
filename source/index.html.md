@@ -334,7 +334,7 @@ ex:
 }
 ```
 
-This endpoint inserts a new recording_config record.
+This endpoint inserts a new recording_config record with sensors
 
 ### HTTP Request
 `POST http://path_to_host/api/recording_config`
@@ -346,6 +346,7 @@ Parameter | Description
 rc_id | The primary key of the recording_config to insert (can be omitted)
 name | The name of the recording_config
 description | The description of the recording_config
+sesnors | Array of sensors
 
 ### HTTP Response
 `HTTP/1.0 201 CREATED`
