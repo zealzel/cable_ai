@@ -249,6 +249,9 @@
                     <a href="#insert-a-recording-config-record" class="toc-h2 toc-link" data-title="RecordingConfig">Insert a Recording Config Record</a>
                   </li>
                   <li>
+                    <a href="#update-a-existed-recording-config-record" class="toc-h2 toc-link" data-title="RecordingConfig">Update a Existed Recording Config Record</a>
+                  </li>
+                  <li>
                     <a href="#delete-a-recording-config-record" class="toc-h2 toc-link" data-title="RecordingConfig">Delete a Recording Config Record</a>
                   </li>
               </ul>
@@ -580,6 +583,52 @@ http post http://path_to_host/api/recording_config <span class="se">\</span>
 <p><code>HTTP/1.0 201 CREATED</code></p>
 
 <!-- =============================================================== -->
+<h2 id='update-a-existed-recording-config-record'>Update a Existed Recording Config Record</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
+curl http://path_to_host/api/recording_config/rc_id <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="s1">'{"name": modified_name,
+     "description": modified_description}'</span>
+
+<span class="c"># using httpie</span>
+http post http://path_to_host/api/recording_config/rc_id <span class="se">\</span>
+          <span class="nv">name</span><span class="o">=</span>modified_name <span class="se">\</span>
+          <span class="nv">description</span><span class="o">=</span>modified_description
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'http://path_to_host/api/recording_config/rc_id'</span><span class="p">,</span> 
+                    <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s">'name'</span><span class="p">:</span> <span class="n">modified_name</span><span class="p">,</span> <span class="s">'description'</span><span class="p">:</span> <span class="n">modified_description</span><span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="err">modified_description</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="err">modified_name</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"rc_id"</span><span class="p">:</span><span class="w"> </span><span class="err">rc_id_new</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sensors"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint updates a existed recording_config record.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>POST http://path_to_host/api/recording_config/rc_id</code></p>
+<h3 id='json-parameters-3'>JSON Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>The name of the recording_config</td>
+</tr>
+<tr>
+<td>description</td>
+<td>The description of the recording_config</td>
+</tr>
+</tbody></table>
+
+<!-- =============================================================== -->
 <h2 id='delete-a-recording-config-record'>Delete a Recording Config Record</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
 curl -X DELETE http://path_to_host/api/recording_config/3
 
@@ -594,7 +643,7 @@ http delete http://path_to_host/api/recording_config/3
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 </span></code></pre>
 <p>This endpoint deletes a recording_config record.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>DELETE http://path_to_host/api/recording_config/3</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
@@ -647,7 +696,7 @@ http get http://path_to_host/api/sensor
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint lists all sensor records.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET http://path_to_host/api/sensor</code></p>
 <h3 id='http-response-4'>HTTP Response</h3>
 <p><code>HTTP/1.0 200 OK</code></p>
@@ -677,9 +726,9 @@ http post http://path_to_host/api/sensor <span class="se">\</span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint inserts a new sensor record.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>POST http://path_to_host/api/sensor</code></p>
-<h3 id='json-parameters-3'>JSON Parameters</h3>
+<h3 id='json-parameters-4'>JSON Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -709,7 +758,7 @@ http post http://path_to_host/api/sensor <span class="se">\</span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint deletes a specific raw.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>DELETE http://path_to_host/sensor/&lt;sid&gt;</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
@@ -749,9 +798,9 @@ http post http://path_to_host/api/sensor/sid <span class="se">\</span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint updates a existed sensor record.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>POST http://path_to_host/api/sensor/sid</code></p>
-<h3 id='json-parameters-4'>JSON Parameters</h3>
+<h3 id='json-parameters-5'>JSON Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -773,9 +822,9 @@ http post http://path_to_host/api/sensor/sid <span class="se">\</span>
 <!-- =============================================================== -->
 <h2 id='start-simulator-begin-to-send-data'>Start Simulator: Begin to Send Data</h2><pre class="highlight shell tab-shell"><code><span class="c"># using httpie</span>
 http post http://path_to_simulator_host/simu/start_event period:<span class="o">=</span>1000 rc_id:<span class="o">=</span>1
-</code></pre><h3 id='http-request-11'>HTTP Request</h3>
+</code></pre><h3 id='http-request-12'>HTTP Request</h3>
 <p><code>POST http://path_to_simulator_host/simu/start_event</code></p>
-<h3 id='json-parameters-5'>JSON Parameters</h3>
+<h3 id='json-parameters-6'>JSON Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
