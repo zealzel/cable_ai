@@ -246,7 +246,7 @@
                     <a href="#list-all-recordingconfigs" class="toc-h2 toc-link" data-title="RecordingConfig">List All RecordingConfigs</a>
                   </li>
                   <li>
-                    <a href="#insert-a-recording-config-record" class="toc-h2 toc-link" data-title="RecordingConfig">Insert a Recording Config Record</a>
+                    <a href="#insert-a-recording-config-record-with-sensors" class="toc-h2 toc-link" data-title="RecordingConfig">Insert a Recording Config Record with Sensors</a>
                   </li>
                   <li>
                     <a href="#update-a-existed-recording-config-record" class="toc-h2 toc-link" data-title="RecordingConfig">Update a Existed Recording Config Record</a>
@@ -529,34 +529,47 @@ http get http://path_to_host/api/recording_config
 <p><code>HTTP/1.0 200 OK</code></p>
 
 <!-- =============================================================== -->
-<h2 id='insert-a-recording-config-record'>Insert a Recording Config Record</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
+<h2 id='insert-a-recording-config-record-with-sensors'>Insert a Recording Config Record with Sensors</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
 curl http://path_to_host/api/recording_config <span class="se">\</span>
 -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
--d <span class="s1">'{"rc_id": rec_id_new,
-     "name": "rec_name",
+-d <span class="s1">'{"name": "rec_name",
      "description": "..."}'</span>
 
 <span class="c"># using httpie</span>
 http post http://path_to_host/api/recording_config <span class="se">\</span>
-          <span class="nv">rc_id</span><span class="o">=</span>rc_id_new <span class="se">\</span>
           <span class="nv">name</span><span class="o">=</span><span class="s1">'rec_name'</span> <span class="se">\</span>
-          <span class="nv">description</span><span class="o">=</span><span class="s1">'...'</span>
+          <span class="nv">description</span><span class="o">=</span><span class="s1">'...'</span> <span class="se">\</span>
+          sensors:<span class="o">=</span><span class="s1">'[{"sid": sid1}, {"sid": sid2}]'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'http://path_to_host/api/recording_config'</span><span class="p">,</span> 
-                    <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s">'name'</span><span class="p">:</span> <span class="s">'rec_name'</span><span class="p">,</span> <span class="s">'description'</span><span class="p">:</span> <span class="s">'...'</span><span class="p">)</span>
+                         <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s">'name'</span><span class="p">:</span> <span class="s">'rec_name'</span><span class="p">,</span> 
+                               <span class="s">'description'</span><span class="p">:</span> <span class="s">'...'</span><span class="p">,</span> 
+                               <span class="s">'sensors'</span><span class="p">:</span> <span class="p">[{</span><span class="s">'sid'</span><span class="p">:</span> <span class="n">sid1</span><span class="p">},</span> <span class="p">{</span><span class="s">'sid'</span><span class="p">:</span> <span class="n">sid2</span><span class="p">}]})</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="err">ex</span><span class="p">:</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test3"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rec_name"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"rc_id"</span><span class="p">:</span><span class="w"> </span><span class="err">rc_id_new</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"sensors"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"config test1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"rc_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sensors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"img_ref"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"loc_orient"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loc1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"img_ref"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"loc_orient"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loc2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint inserts a new recording_config record.</p>
+<p>This endpoint inserts a new recording_config record with sensors</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>POST http://path_to_host/api/recording_config</code></p>
 <h3 id='json-parameters-2'>JSON Parameters</h3>
@@ -577,6 +590,10 @@ http post http://path_to_host/api/recording_config <span class="se">\</span>
 <tr>
 <td>description</td>
 <td>The description of the recording_config</td>
+</tr>
+<tr>
+<td>sesnors</td>
+<td>Array of sensors</td>
 </tr>
 </tbody></table>
 <h3 id='http-response-2'>HTTP Response</h3>
