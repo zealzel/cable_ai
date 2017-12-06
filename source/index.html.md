@@ -358,20 +358,20 @@ sensors | Array of sensors
 
 ```shell
 # using curl
-curl http://path_to_host/api/recording_config/rc_id \
--H "Content-Type: application/json" \
--d '{"name": modified_name,
-     "description": modified_description}'
+#curl http://path_to_host/api/recording_config/rc_id \
+#-H "Content-Type: application/json" \
+#-d '{"name": modified_name,
+#     "description": modified_description}'
 
 # using httpie
-http post http://path_to_host/api/recording_config/rc_id \
-          name=modified_name \
-          description=modified_description
+http put http://path_to_host/api/recording_config/rc_id \
+         name=modified_name \
+         description=modified_description
 ```
 
 ```python
 import requests
-response = requests.post('http://path_to_host/api/recording_config/rc_id', 
+response = requests.put('http://path_to_host/api/recording_config/rc_id', 
                     json={'name': modified_name, 'description': modified_description)
 ```
 
@@ -577,20 +577,20 @@ ID | The ID of the sensor to delete
 
 ```shell
 # using curl
-curl http://path_to_host/api/sensor \
--H "Content-Type: application/json" \
--d '{"loc_orient": modified_description,
-     "img_ref": modified_img_ref}'
+#curl http://path_to_host/api/sensor \
+#-H "Content-Type: application/json" \
+#-d '{"loc_orient": modified_description,
+#     "img_ref": modified_img_ref}'
 
 # using httpie
-http post http://path_to_host/api/sensor/sid \
-          loc_orient=modified_description \
-          img_ref=modified_imf_ref
+http put http://path_to_host/api/sensor/sid \
+         loc_orient=modified_description \
+         img_ref=modified_imf_ref
 ```
 
 ```python
 import requests
-response = requests.post('http://path_to_host/api/sensor/sid', 
+response = requests.put('http://path_to_host/api/sensor/sid', 
                     json={'loc_orient': modified_description, 'img_ref': modified_img_ref)
 ```
 
@@ -617,7 +617,7 @@ loc_orient | The modified description of the sensor
 img_ref | The modified image url location
 
 ### HTTP Response
-`HTTP/1.0 201 CREATED`
+`HTTP/1.0 200 OK`
 
 
 
@@ -741,6 +741,64 @@ remark | remark
 
 ### HTTP Response
 `HTTP/1.0 201 CREATED`
+
+
+
+
+
+<!-- =============================================================== -->
+## Update a Event Record
+
+```shell
+# using curl
+#curl http://path_to_host/api/sensor \
+#-H "Content-Type: application/json" \
+#-d '{"loc_orient": modified_description,
+#     "img_ref": modified_img_ref}'
+
+# using httpie
+http put http://path_to_host/api/event/event_id \
+         rc_id=8 \
+         start_time="2017/12/5T08:55:12" \
+         end_time="2017/12/5T13:42:51" \
+         remark=some_remark
+```
+
+```python
+import requests
+response = requests.put('http://path_to_host/api/event/event_id', 
+                    json={'rc_id': 8, 'start_time': '2017/12/5 08:55:12'}
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "end_time": "2017-12-12T19:23:12",
+  "event_id": 16,
+  "intvs": [],
+  "rc_id": 3,
+  "remark": null,
+  "start_time": "2017-12-06T15:11:33"
+}
+```
+
+This endpoint updates a existed event record.
+
+### HTTP Request
+`POST http://path_to_host/api/event/event_id`
+
+### JSON Parameters
+
+Parameter | Description
+--------- | -----------
+rc_id | primary key of table recording_config
+start_time | start time of the event
+end_time | end time of the event
+remark | remark
+
+### HTTP Response
+`HTTP/1.0 200 OK`
 
 
 
