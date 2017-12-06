@@ -274,6 +274,14 @@
               </ul>
           </li>
           <li>
+            <a href="#event" class="toc-h1 toc-link" data-title="Event">Event</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-all-events" class="toc-h2 toc-link" data-title="Event">List All Events</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#simulator-api" class="toc-h1 toc-link" data-title="Simulator API">Simulator API</a>
               <ul class="toc-list-h2">
                   <li>
@@ -834,11 +842,53 @@ http post http://path_to_host/api/sensor/sid <span class="se">\</span>
 </tbody></table>
 <h3 id='http-response-6'>HTTP Response</h3>
 <p><code>HTTP/1.0 201 CREATED</code></p>
+<h1 id='event'>Event</h1>
+<!-- =============================================================== -->
+<h2 id='list-all-events'>List All Events</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
+curl http://path_to_host/api/event
+
+<span class="c"># using httpie</span>
+http get http://path_to_host/api/event
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'http://path_to_host/api/event'</span><span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"num_results"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"objects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"intvs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"rc_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"remark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sent by simulator"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-06T16:23:12"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"intvs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"rc_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"remark"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-06T15:11:33"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint lists all event records.</p>
+<h3 id='http-request-12'>HTTP Request</h3>
+<p><code>GET http://path_to_host/api/event</code></p>
+<h3 id='http-response-7'>HTTP Response</h3>
+<p><code>HTTP/1.0 200 OK</code></p>
 <h1 id='simulator-api'>Simulator API</h1>
 <!-- =============================================================== -->
 <h2 id='start-simulator-begin-to-send-data'>Start Simulator: Begin to Send Data</h2><pre class="highlight shell tab-shell"><code><span class="c"># using httpie</span>
 http post http://path_to_simulator_host/simu/start_event period:<span class="o">=</span>1000 rc_id:<span class="o">=</span>1
-</code></pre><h3 id='http-request-12'>HTTP Request</h3>
+</code></pre><h3 id='http-request-13'>HTTP Request</h3>
 <p><code>POST http://path_to_simulator_host/simu/start_event</code></p>
 <h3 id='json-parameters-6'>JSON Parameters</h3>
 <table><thead>
