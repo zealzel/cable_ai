@@ -621,6 +621,65 @@ img_ref | The modified image url location
 
 
 
+
+
+# Event
+
+<!-- =============================================================== -->
+## List All Events
+
+```shell
+# using curl
+curl http://path_to_host/api/event
+
+# using httpie
+http get http://path_to_host/api/event
+```
+
+```python
+import requests
+response = requests.get('http://path_to_host/api/event')
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "num_results": 2,
+  "objects": [
+    {
+      "end_time": null,
+      "event_id": 14,
+      "intvs": [],
+      "rc_id": 1,
+      "remark": "sent by simulator",
+      "start_time": null
+    },
+    {
+      "end_time": "2017-12-06T16:23:12",
+      "event_id": 15,
+      "intvs": [],
+      "rc_id": 3,
+      "remark": null,
+      "start_time": "2017-12-06T15:11:33"
+    }
+  ],
+  "page": 1,
+  "total_pages": 1
+}
+```
+
+This endpoint lists all event records.
+
+### HTTP Request
+`GET http://path_to_host/api/event`
+
+### HTTP Response
+`HTTP/1.0 200 OK`
+
+
+
+
 # Simulator API
 
 <!-- =============================================================== -->
