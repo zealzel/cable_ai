@@ -279,6 +279,12 @@
                   <li>
                     <a href="#list-all-events" class="toc-h2 toc-link" data-title="Event">List All Events</a>
                   </li>
+                  <li>
+                    <a href="#insert-a-event-record" class="toc-h2 toc-link" data-title="Event">Insert a Event Record</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-specific-event" class="toc-h2 toc-link" data-title="Event">Delete a Specific Event</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -884,13 +890,104 @@ http get http://path_to_host/api/event
 <p><code>GET http://path_to_host/api/event</code></p>
 <h3 id='http-response-7'>HTTP Response</h3>
 <p><code>HTTP/1.0 200 OK</code></p>
+
+<!-- =============================================================== -->
+<h2 id='insert-a-event-record'>Insert a Event Record</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
+curl http://path_to_host/api/event <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="s1">'{"rc_id": 7,
+     "start_time": "2017/11/3 15:32:16",
+     "end_time": "2017/11/3 16:18:59",
+     "remark": some_remark}'</span>
+
+<span class="c"># using httpie</span>
+http post http://path_to_host/api/event <span class="se">\</span>
+          <span class="nv">rc_id</span><span class="o">=</span>7 <span class="se">\</span>
+          <span class="nv">start_time</span><span class="o">=</span><span class="s2">"2017/11/03T15:32:16"</span>
+          <span class="nv">end_time</span><span class="o">=</span><span class="s2">"2017/11/03T15:32:16"</span>
+          <span class="nv">remark</span><span class="o">=</span>some_remark
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'http://path_to_host/api/event'</span><span class="p">,</span> 
+                    <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s">'rc_id'</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span> 
+                          <span class="s">'start_time'</span><span class="p">:</span> <span class="s">'2017/11/03T15:32:16'</span><span class="p">,</span>
+                          <span class="s">'end_time'</span><span class="p">:</span> <span class="s">'2017/11/03T17:29:42'</span><span class="p">,</span>
+                          <span class="s">'remark'</span><span class="p">:</span> <span class="n">some_remark</span>
+                         <span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-06T12:23:12"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"intvs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"rc_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"remark"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-06T15:11:33"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint inserts a new event record.</p>
+<h3 id='http-request-13'>HTTP Request</h3>
+<p><code>POST http://path_to_host/api/event</code></p>
+<h3 id='json-parameters-6'>JSON Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>rc_id</td>
+<td>primary key of table recording_config</td>
+</tr>
+<tr>
+<td>start_time</td>
+<td>start time of the event</td>
+</tr>
+<tr>
+<td>end_time</td>
+<td>end time of the event</td>
+</tr>
+<tr>
+<td>remark</td>
+<td>remark</td>
+</tr>
+</tbody></table>
+<h3 id='http-response-8'>HTTP Response</h3>
+<p><code>HTTP/1.0 201 CREATED</code></p>
+
+<!-- =============================================================== -->
+<h2 id='delete-a-specific-event'>Delete a Specific Event</h2>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint deletes a specific event.</p>
+<h3 id='http-request-14'>HTTP Request</h3>
+<p><code>DELETE http://path_to_host/event/&lt;event_id&gt;</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the event to delete</td>
+</tr>
+</tbody></table>
 <h1 id='simulator-api'>Simulator API</h1>
 <!-- =============================================================== -->
 <h2 id='start-simulator-begin-to-send-data'>Start Simulator: Begin to Send Data</h2><pre class="highlight shell tab-shell"><code><span class="c"># using httpie</span>
 http post http://path_to_simulator_host/simu/start_event period:<span class="o">=</span>1000 rc_id:<span class="o">=</span>1
-</code></pre><h3 id='http-request-13'>HTTP Request</h3>
+</code></pre><h3 id='http-request-15'>HTTP Request</h3>
 <p><code>POST http://path_to_simulator_host/simu/start_event</code></p>
-<h3 id='json-parameters-6'>JSON Parameters</h3>
+<h3 id='json-parameters-7'>JSON Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
