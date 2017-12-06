@@ -390,13 +390,18 @@ response = requests.put('http://path_to_host/api/recording_config/rc_id',
 This endpoint updates a existed recording_config record.
 
 ### HTTP Request
-`POST http://path_to_host/api/recording_config/rc_id`
+`PUT http://path_to_host/api/recording_config/rc_id`
 
 ### JSON Parameters
 Parameter | Description
 --------- | -----------
 name | The name of the recording_config
 description | The description of the recording_config
+
+### HTTP Response
+`HTTP/1.0 200 OK`
+
+
 
 
 <!-- =============================================================== -->
@@ -607,7 +612,7 @@ response = requests.put('http://path_to_host/api/sensor/sid',
 This endpoint updates a existed sensor record.
 
 ### HTTP Request
-`POST http://path_to_host/api/sensor/sid`
+`PUT http://path_to_host/api/sensor/sid`
 
 ### JSON Parameters
 
@@ -786,7 +791,7 @@ response = requests.put('http://path_to_host/api/event/event_id',
 This endpoint updates a existed event record.
 
 ### HTTP Request
-`POST http://path_to_host/api/event/event_id`
+`PUT http://path_to_host/api/event/event_id`
 
 ### JSON Parameters
 
