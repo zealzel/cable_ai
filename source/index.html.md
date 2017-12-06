@@ -680,6 +680,99 @@ This endpoint lists all event records.
 
 
 
+
+<!-- =============================================================== -->
+## Insert a Event Record
+
+```shell
+# using curl
+curl http://path_to_host/api/event \
+-H "Content-Type: application/json" \
+-d '{"rc_id": 7,
+     "start_time": "2017/11/3 15:32:16",
+     "end_time": "2017/11/3 16:18:59",
+     "remark": some_remark}'
+
+# using httpie
+http post http://path_to_host/api/event \
+          rc_id=7 \
+          start_time="2017/11/03T15:32:16"
+          end_time="2017/11/03T15:32:16"
+          remark=some_remark
+```
+
+```python
+import requests
+response = requests.post('http://path_to_host/api/event', 
+                    json={'rc_id': 24, 
+                          'start_time': '2017/11/03T15:32:16',
+                          'end_time': '2017/11/03T17:29:42',
+                          'remark': some_remark
+                         })
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "end_time": "2017-12-06T12:23:12",
+  "event_id": 16,
+  "intvs": [],
+  "rc_id": 3,
+  "remark": null,
+  "start_time": "2017-12-06T15:11:33"
+}
+```
+
+This endpoint inserts a new event record.
+
+### HTTP Request
+`POST http://path_to_host/api/event`
+
+### JSON Parameters
+
+Parameter | Description
+--------- | -----------
+rc_id | primary key of table recording_config
+start_time | start time of the event
+end_time | end time of the event
+remark | remark
+
+
+### HTTP Response
+`HTTP/1.0 201 CREATED`
+
+
+
+
+<!-- =============================================================== -->
+## Delete a Specific Event
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": 2,
+  "deleted" : ":("
+}
+```
+
+This endpoint deletes a specific event.
+
+### HTTP Request
+
+`DELETE http://path_to_host/event/<event_id>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the event to delete
+
+
+
+
+
 # Simulator API
 
 <!-- =============================================================== -->
