@@ -283,6 +283,9 @@
                     <a href="#insert-a-event-record" class="toc-h2 toc-link" data-title="Event">Insert a Event Record</a>
                   </li>
                   <li>
+                    <a href="#update-a-event-record" class="toc-h2 toc-link" data-title="Event">Update a Event Record</a>
+                  </li>
+                  <li>
                     <a href="#delete-a-specific-event" class="toc-h2 toc-link" data-title="Event">Delete a Specific Event</a>
                   </li>
               </ul>
@@ -614,17 +617,17 @@ http post http://path_to_host/api/recording_config <span class="se">\</span>
 
 <!-- =============================================================== -->
 <h2 id='update-a-existed-recording-config-record'>Update a Existed Recording Config Record</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
-curl http://path_to_host/api/recording_config/rc_id <span class="se">\</span>
--H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
--d <span class="s1">'{"name": modified_name,
-     "description": modified_description}'</span>
+<span class="c">#curl http://path_to_host/api/recording_config/rc_id \</span>
+<span class="c">#-H "Content-Type: application/json" \</span>
+<span class="c">#-d '{"name": modified_name,</span>
+<span class="c">#     "description": modified_description}'</span>
 
 <span class="c"># using httpie</span>
-http post http://path_to_host/api/recording_config/rc_id <span class="se">\</span>
-          <span class="nv">name</span><span class="o">=</span>modified_name <span class="se">\</span>
-          <span class="nv">description</span><span class="o">=</span>modified_description
+http put http://path_to_host/api/recording_config/rc_id <span class="se">\</span>
+         <span class="nv">name</span><span class="o">=</span>modified_name <span class="se">\</span>
+         <span class="nv">description</span><span class="o">=</span>modified_description
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'http://path_to_host/api/recording_config/rc_id'</span><span class="p">,</span> 
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s">'http://path_to_host/api/recording_config/rc_id'</span><span class="p">,</span> 
                     <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s">'name'</span><span class="p">:</span> <span class="n">modified_name</span><span class="p">,</span> <span class="s">'description'</span><span class="p">:</span> <span class="n">modified_description</span><span class="p">)</span>
 </code></pre>
 <blockquote>
@@ -805,17 +808,17 @@ http post http://path_to_host/api/sensor <span class="se">\</span>
 
 <!-- =============================================================== -->
 <h2 id='update-a-sensor-record'>Update a Sensor Record</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
-curl http://path_to_host/api/sensor <span class="se">\</span>
--H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
--d <span class="s1">'{"loc_orient": modified_description,
-     "img_ref": modified_img_ref}'</span>
+<span class="c">#curl http://path_to_host/api/sensor \</span>
+<span class="c">#-H "Content-Type: application/json" \</span>
+<span class="c">#-d '{"loc_orient": modified_description,</span>
+<span class="c">#     "img_ref": modified_img_ref}'</span>
 
 <span class="c"># using httpie</span>
-http post http://path_to_host/api/sensor/sid <span class="se">\</span>
-          <span class="nv">loc_orient</span><span class="o">=</span>modified_description <span class="se">\</span>
-          <span class="nv">img_ref</span><span class="o">=</span>modified_imf_ref
+http put http://path_to_host/api/sensor/sid <span class="se">\</span>
+         <span class="nv">loc_orient</span><span class="o">=</span>modified_description <span class="se">\</span>
+         <span class="nv">img_ref</span><span class="o">=</span>modified_imf_ref
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'http://path_to_host/api/sensor/sid'</span><span class="p">,</span> 
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s">'http://path_to_host/api/sensor/sid'</span><span class="p">,</span> 
                     <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s">'loc_orient'</span><span class="p">:</span> <span class="n">modified_description</span><span class="p">,</span> <span class="s">'img_ref'</span><span class="p">:</span> <span class="n">modified_img_ref</span><span class="p">)</span>
 </code></pre>
 <blockquote>
@@ -847,7 +850,7 @@ http post http://path_to_host/api/sensor/sid <span class="se">\</span>
 </tr>
 </tbody></table>
 <h3 id='http-response-6'>HTTP Response</h3>
-<p><code>HTTP/1.0 201 CREATED</code></p>
+<p><code>HTTP/1.0 200 OK</code></p>
 <h1 id='event'>Event</h1>
 <!-- =============================================================== -->
 <h2 id='list-all-events'>List All Events</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
@@ -957,6 +960,65 @@ http post http://path_to_host/api/event <span class="se">\</span>
 <p><code>HTTP/1.0 201 CREATED</code></p>
 
 <!-- =============================================================== -->
+<h2 id='update-a-event-record'>Update a Event Record</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
+<span class="c">#curl http://path_to_host/api/sensor \</span>
+<span class="c">#-H "Content-Type: application/json" \</span>
+<span class="c">#-d '{"loc_orient": modified_description,</span>
+<span class="c">#     "img_ref": modified_img_ref}'</span>
+
+<span class="c"># using httpie</span>
+http put http://path_to_host/api/event/event_id <span class="se">\</span>
+         <span class="nv">rc_id</span><span class="o">=</span>8 <span class="se">\</span>
+         <span class="nv">start_time</span><span class="o">=</span><span class="s2">"2017/12/5T08:55:12"</span> <span class="se">\</span>
+         <span class="nv">end_time</span><span class="o">=</span><span class="s2">"2017/12/5T13:42:51"</span> <span class="se">\</span>
+         <span class="nv">remark</span><span class="o">=</span>some_remark
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s">'http://path_to_host/api/event/event_id'</span><span class="p">,</span> 
+                    <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s">'rc_id'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">'start_time'</span><span class="p">:</span> <span class="s">'2017/12/5 08:55:12'</span><span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-12T19:23:12"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"intvs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"rc_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"remark"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-06T15:11:33"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint updates a existed event record.</p>
+<h3 id='http-request-14'>HTTP Request</h3>
+<p><code>POST http://path_to_host/api/event/event_id</code></p>
+<h3 id='json-parameters-7'>JSON Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>rc_id</td>
+<td>primary key of table recording_config</td>
+</tr>
+<tr>
+<td>start_time</td>
+<td>start time of the event</td>
+</tr>
+<tr>
+<td>end_time</td>
+<td>end time of the event</td>
+</tr>
+<tr>
+<td>remark</td>
+<td>remark</td>
+</tr>
+</tbody></table>
+<h3 id='http-response-9'>HTTP Response</h3>
+<p><code>HTTP/1.0 200 OK</code></p>
+
+<!-- =============================================================== -->
 <h2 id='delete-a-specific-event'>Delete a Specific Event</h2>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -967,7 +1029,7 @@ http post http://path_to_host/api/event <span class="se">\</span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint deletes a specific event.</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>DELETE http://path_to_host/event/&lt;event_id&gt;</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
@@ -985,9 +1047,9 @@ http post http://path_to_host/api/event <span class="se">\</span>
 <!-- =============================================================== -->
 <h2 id='start-simulator-begin-to-send-data'>Start Simulator: Begin to Send Data</h2><pre class="highlight shell tab-shell"><code><span class="c"># using httpie</span>
 http post http://path_to_simulator_host/simu/start_event period:<span class="o">=</span>1000 rc_id:<span class="o">=</span>1
-</code></pre><h3 id='http-request-15'>HTTP Request</h3>
+</code></pre><h3 id='http-request-16'>HTTP Request</h3>
 <p><code>POST http://path_to_simulator_host/simu/start_event</code></p>
-<h3 id='json-parameters-7'>JSON Parameters</h3>
+<h3 id='json-parameters-8'>JSON Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
