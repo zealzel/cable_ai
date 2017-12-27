@@ -291,6 +291,14 @@
               </ul>
           </li>
           <li>
+            <a href="#failure-interval" class="toc-h1 toc-link" data-title="Failure Interval">Failure Interval</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-filtered-failure-intervals" class="toc-h2 toc-link" data-title="Failure Interval">Get Filtered Failure Intervals</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#simulator-api" class="toc-h1 toc-link" data-title="Simulator API">Simulator API</a>
               <ul class="toc-list-h2">
                   <li>
@@ -643,7 +651,7 @@ http put http://path_to_host/api/recording_config/rc_id <span class="se">\</span
 </span></code></pre>
 <p>This endpoint updates a existed recording_config record.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
-<p><code>POST http://path_to_host/api/recording_config/rc_id</code></p>
+<p><code>PUT http://path_to_host/api/recording_config/rc_id</code></p>
 <h3 id='json-parameters-3'>JSON Parameters</h3>
 <table><thead>
 <tr>
@@ -660,6 +668,8 @@ http put http://path_to_host/api/recording_config/rc_id <span class="se">\</span
 <td>The description of the recording_config</td>
 </tr>
 </tbody></table>
+<h3 id='http-response-3'>HTTP Response</h3>
+<p><code>HTTP/1.0 200 OK</code></p>
 
 <!-- =============================================================== -->
 <h2 id='delete-a-recording-config-record'>Delete a Recording Config Record</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
@@ -690,7 +700,7 @@ http delete http://path_to_host/api/recording_config/3
 <td>The rc_id of the recording_config to delete</td>
 </tr>
 </tbody></table>
-<h3 id='http-response-3'>HTTP Response</h3>
+<h3 id='http-response-4'>HTTP Response</h3>
 <p><code>HTTP/1.0 204 NO CONTENT</code></p>
 <h1 id='sensor'>Sensor</h1>
 <!-- =============================================================== -->
@@ -731,7 +741,7 @@ http get http://path_to_host/api/sensor
 <p>This endpoint lists all sensor records.</p>
 <h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET http://path_to_host/api/sensor</code></p>
-<h3 id='http-response-4'>HTTP Response</h3>
+<h3 id='http-response-5'>HTTP Response</h3>
 <p><code>HTTP/1.0 200 OK</code></p>
 
 <!-- =============================================================== -->
@@ -777,7 +787,7 @@ http post http://path_to_host/api/sensor <span class="se">\</span>
 <td>The image url location</td>
 </tr>
 </tbody></table>
-<h3 id='http-response-5'>HTTP Response</h3>
+<h3 id='http-response-6'>HTTP Response</h3>
 <p><code>HTTP/1.0 201 CREATED</code></p>
 
 <!-- =============================================================== -->
@@ -832,7 +842,7 @@ http put http://path_to_host/api/sensor/sid <span class="se">\</span>
 </span></code></pre>
 <p>This endpoint updates a existed sensor record.</p>
 <h3 id='http-request-11'>HTTP Request</h3>
-<p><code>POST http://path_to_host/api/sensor/sid</code></p>
+<p><code>PUT http://path_to_host/api/sensor/sid</code></p>
 <h3 id='json-parameters-5'>JSON Parameters</h3>
 <table><thead>
 <tr>
@@ -849,7 +859,7 @@ http put http://path_to_host/api/sensor/sid <span class="se">\</span>
 <td>The modified image url location</td>
 </tr>
 </tbody></table>
-<h3 id='http-response-6'>HTTP Response</h3>
+<h3 id='http-response-7'>HTTP Response</h3>
 <p><code>HTTP/1.0 200 OK</code></p>
 <h1 id='event'>Event</h1>
 <!-- =============================================================== -->
@@ -891,7 +901,7 @@ http get http://path_to_host/api/event
 <p>This endpoint lists all event records.</p>
 <h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET http://path_to_host/api/event</code></p>
-<h3 id='http-response-7'>HTTP Response</h3>
+<h3 id='http-response-8'>HTTP Response</h3>
 <p><code>HTTP/1.0 200 OK</code></p>
 
 <!-- =============================================================== -->
@@ -956,7 +966,7 @@ http post http://path_to_host/api/event <span class="se">\</span>
 <td>remark</td>
 </tr>
 </tbody></table>
-<h3 id='http-response-8'>HTTP Response</h3>
+<h3 id='http-response-9'>HTTP Response</h3>
 <p><code>HTTP/1.0 201 CREATED</code></p>
 
 <!-- =============================================================== -->
@@ -990,7 +1000,7 @@ http put http://path_to_host/api/event/event_id <span class="se">\</span>
 </span></code></pre>
 <p>This endpoint updates a existed event record.</p>
 <h3 id='http-request-14'>HTTP Request</h3>
-<p><code>POST http://path_to_host/api/event/event_id</code></p>
+<p><code>PUT http://path_to_host/api/event/event_id</code></p>
 <h3 id='json-parameters-7'>JSON Parameters</h3>
 <table><thead>
 <tr>
@@ -1015,7 +1025,7 @@ http put http://path_to_host/api/event/event_id <span class="se">\</span>
 <td>remark</td>
 </tr>
 </tbody></table>
-<h3 id='http-response-9'>HTTP Response</h3>
+<h3 id='http-response-10'>HTTP Response</h3>
 <p><code>HTTP/1.0 200 OK</code></p>
 
 <!-- =============================================================== -->
@@ -1043,11 +1053,46 @@ http put http://path_to_host/api/event/event_id <span class="se">\</span>
 <td>The ID of the event to delete</td>
 </tr>
 </tbody></table>
+<h1 id='failure-interval'>Failure Interval</h1>
+<!-- =============================================================== -->
+<h2 id='get-filtered-failure-intervals'>Get Filtered Failure Intervals</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
+curl http://path_to_host/failure_intv
+
+<span class="c"># using httpie</span>
+http post http://path_to_host/failure_intv <span class="nv">rc_id</span><span class="o">=</span>3 <span class="nv">fid</span><span class="o">=</span>1 <span class="nv">orderby</span><span class="o">=</span>fid
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'http://path_to_host/failure_intv'</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s">'rc_id'</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s">'fid'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">'orderby'</span><span class="p">:</span><span class="s">'fid'</span><span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"datetime_end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-27T09:44:21+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"datetime_start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-27T09:39:20+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fi_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"datetime_end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-06T16:18:22+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"datetime_start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-06T15:20:10+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fi_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fid"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific raw record.</p>
+<h3 id='http-request-16'>HTTP Request</h3>
+<p><code>POST http://path_to_host/failure_intv</code></p>
+
+<!-- =============================================================== -->
 <h1 id='simulator-api'>Simulator API</h1>
 <!-- =============================================================== -->
 <h2 id='start-simulator-begin-to-send-data'>Start Simulator: Begin to Send Data</h2><pre class="highlight shell tab-shell"><code><span class="c"># using httpie</span>
 http post http://path_to_simulator_host/simu/start_event period:<span class="o">=</span>1000 rc_id:<span class="o">=</span>1
-</code></pre><h3 id='http-request-16'>HTTP Request</h3>
+</code></pre><h3 id='http-request-17'>HTTP Request</h3>
 <p><code>POST http://path_to_simulator_host/simu/start_event</code></p>
 <h3 id='json-parameters-8'>JSON Parameters</h3>
 <table><thead>
