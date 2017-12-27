@@ -37,6 +37,7 @@ C&W的45Gbit/s高頻線纜在cabling製程中，因轉盤轉速、張力等差�
 
 There's no authentication in this project.
 
+
 # Raws
 
 <!-- =============================================================== -->
@@ -831,6 +832,56 @@ This endpoint deletes a specific event.
 Parameter | Description
 --------- | -----------
 ID | The ID of the event to delete
+
+
+
+# Failure Interval
+
+<!-- =============================================================== -->
+## Get Filtered Failure Intervals
+
+```shell
+# using curl
+curl http://path_to_host/failure_intv
+
+# using httpie
+http post http://path_to_host/failure_intv rc_id=3 fid=1 orderby=fid
+```
+
+```python
+import requests
+response = requests.post('http://path_to_host/failure_intv', json={'rc_id':3, 'fid':1, 'orderby':'fid'})
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+    {
+        "datetime_end": "2017-12-27T09:44:21+00:00",
+        "datetime_start": "2017-12-27T09:39:20+00:00",
+        "event_id": 15,
+        "fi_id": 1,
+        "fid": 1
+    },
+    {
+        "datetime_end": "2017-12-06T16:18:22+00:00",
+        "datetime_start": "2017-12-06T15:20:10+00:00",
+        "event_id": 15,
+        "fi_id": 2,
+        "fid": 2
+    }
+]
+```
+
+This endpoint retrieves a specific raw record.
+
+### HTTP Request
+
+`POST http://path_to_host/failure_intv`
+
+
+<!-- =============================================================== -->
 
 
 
