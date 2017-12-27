@@ -874,7 +874,9 @@ response = requests.post('http://path_to_host/failure_intv', json={'rc_id':3, 'f
 ]
 ```
 
-This endpoint retrieves a specific raw record.
+This endpoint retrieves records of failure intervals filtered by {rc_id, fid}
+and can be sorted by {fid, datetime_start}
+
 
 ### HTTP Request
 
