@@ -299,6 +299,9 @@
                   <li>
                     <a href="#get-filtered-failure-intervals" class="toc-h2 toc-link" data-title="Failure Interval">Get Filtered Failure Intervals</a>
                   </li>
+                  <li>
+                    <a href="#insert-a-failure-interval-record" class="toc-h2 toc-link" data-title="Failure Interval">Insert a Failure Interval Record</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -1075,12 +1078,12 @@ http post http://path_to_host/event/by_failure_intv <span class="se">\</span>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">event_id</span><span class="w"> </span><span class="err">found</span><span class="p">:</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">event_id</span><span class="w"> </span><span class="err">found</span><span class="w">
 </span><span class="p">{</span><span class="w">
     </span><span class="s2">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span><span class="err">#</span><span class="w"> </span><span class="err">event_id</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">found</span><span class="p">:</span><span class="w">
+</span><span class="err">#</span><span class="w"> </span><span class="err">event_id</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">found</span><span class="w">
 </span><span class="p">{</span><span class="w">
     </span><span class="s2">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1127,13 +1130,72 @@ and can be sorted by {fid, datetime_start}</p>
 <p><code>POST http://path_to_host/failure_intv</code></p>
 
 <!-- =============================================================== -->
+<h2 id='insert-a-failure-interval-record'>Insert a Failure Interval Record</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
+curl http://path_to_host/api/failure_interval <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="s1">'{"event_id": 3,
+     "fid": 1,
+     "datetime_start": "2017-12-27T09:16:21",
+     "datetime_end": "2017-12-27T09:18:41"}'</span>
+
+<span class="c"># using httpie</span>
+http post http://path_to_host/api/failure_interval <span class="se">\</span>
+          <span class="nv">event_id</span><span class="o">=</span>3 <span class="se">\</span>
+          <span class="nv">fid</span><span class="o">=</span>1 <span class="se">\</span>
+          <span class="nv">datetime_start</span><span class="o">=</span><span class="s2">"2017-12-27T09:16:21"</span> <span class="se">\</span>
+          <span class="nv">datetime_end</span><span class="o">=</span><span class="s2">"2017-12-27T09:18:41"</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'http://path_to_host/api/failure_interval'</span><span class="p">,</span> 
+                    <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s">'event_id'</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s">'fid'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">'datetime_start'</span><span class="p">:</span><span class="s">'2017-12-27T09:16:21'</span><span class="p">,</span> <span class="s">'datetime_end'</span><span class="p">:</span><span class="s">'2017-12-27T09:18:41'</span> <span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"datetime_end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-06T13:13:13"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"datetime_start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-06T12:12:12"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fi_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint inserts a new failure_interval record.</p>
+<h3 id='http-request-18'>HTTP Request</h3>
+<p><code>POST http://path_to_host/api/failure_interval</code></p>
+<h3 id='json-parameters-8'>JSON Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_id</td>
+<td>The primary id of the event</td>
+</tr>
+<tr>
+<td>fid</td>
+<td>The primary id of the failure</td>
+</tr>
+<tr>
+<td>datetime_start</td>
+<td>The interval start time</td>
+</tr>
+<tr>
+<td>datetime_end</td>
+<td>The interval end time</td>
+</tr>
+</tbody></table>
+<h3 id='http-response-12'>HTTP Response</h3>
+<p><code>HTTP/1.0 201 CREATED</code></p>
 <h1 id='simulator-api'>Simulator API</h1>
 <!-- =============================================================== -->
 <h2 id='start-simulator-begin-to-send-data'>Start Simulator: Begin to Send Data</h2><pre class="highlight shell tab-shell"><code><span class="c"># using httpie</span>
 http post http://path_to_simulator_host/simu/start_event period:<span class="o">=</span>1000 rc_id:<span class="o">=</span>1
-</code></pre><h3 id='http-request-18'>HTTP Request</h3>
+</code></pre><h3 id='http-request-19'>HTTP Request</h3>
 <p><code>POST http://path_to_simulator_host/simu/start_event</code></p>
-<h3 id='json-parameters-8'>JSON Parameters</h3>
+<h3 id='json-parameters-9'>JSON Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
