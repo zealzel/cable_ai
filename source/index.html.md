@@ -876,7 +876,7 @@ This endpoint get event_id that satisfy given failure interval queries
   {rc_id, datetime_start & datetime_end}
 
 ### HTTP Request
-`GET http://path_to_host/event/by_failure_intv`
+`POST http://path_to_host/event/by_failure_intv`
 
 ### HTTP Response
 `HTTP/1.0 200 OK`
