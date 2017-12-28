@@ -839,16 +839,11 @@ ID | The ID of the event to delete
 
 ```shell
 # using curl
-curl http://path_to_host/event/by_failure_intv
-
-
 curl http://path_to_host/event/by_failure_intv \
 -H "Content-Type: application/json" \
 -d '{"rc_id":3,
      "datetime_start":"2017-09-27T17:53:27", 
      "datetime_end": "2017-09-27T17:54:12"}'
-
-
 
 # using httpie
 http post http://path_to_host/event/by_failure_intv \
