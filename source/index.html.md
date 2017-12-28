@@ -835,6 +835,55 @@ ID | The ID of the event to delete
 
 
 
+## Get EventId by Failure Interval
+
+```shell
+# using curl
+curl http://path_to_host/event/by_failure_intv
+
+
+curl http://path_to_host/event/by_failure_intv \
+-H "Content-Type: application/json" \
+-d '{"rc_id":3,
+     "datetime_start":"2017-09-27T17:53:27", 
+     "datetime_end": "2017-09-27T17:54:12"}'
+
+
+
+# using httpie
+http post http://path_to_host/event/by_failure_intv \
+          rc_id=3 \
+          datetime_start="2017-12-06T16:01:33" \
+          datetime_end="2017-12-06T16:33:22"
+
+```
+
+```python
+import requests
+response = requests.post('http://path_to_host/event/by_failure_intv')
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "event_id": 16
+}
+```
+
+This endpoint get event_id that satisfy given failure interval queries 
+  {rc_id, datetime_start & datetime_end}
+
+### HTTP Request
+`GET http://path_to_host/event/by_failure_intv`
+
+### HTTP Response
+`HTTP/1.0 200 OK`
+
+
+
+
+
 # Failure Interval
 
 <!-- =============================================================== -->
