@@ -861,12 +861,12 @@ response = requests.post('http://path_to_host/event/by_failure_intv')
 > The above command returns JSON structured like this:
 
 ```json
-event_id found:
+# event_id found:
 {
     "event_id": 16
 }
 
-event_id not found:
+# event_id not found:
 {
     "event_id": null
 }
