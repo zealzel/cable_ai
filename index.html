@@ -1057,16 +1057,11 @@ http put http://path_to_host/api/event/event_id <span class="se">\</span>
 </tr>
 </tbody></table>
 <h2 id='get-eventid-by-failure-interval'>Get EventId by Failure Interval</h2><pre class="highlight shell tab-shell"><code><span class="c"># using curl</span>
-curl http://path_to_host/event/by_failure_intv
-
-
 curl http://path_to_host/event/by_failure_intv <span class="se">\</span>
 -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -d <span class="s1">'{"rc_id":3,
      "datetime_start":"2017-09-27T17:53:27", 
      "datetime_end": "2017-09-27T17:54:12"}'</span>
-
-
 
 <span class="c"># using httpie</span>
 http post http://path_to_host/event/by_failure_intv <span class="se">\</span>
@@ -1080,8 +1075,14 @@ http post http://path_to_host/event/by_failure_intv <span class="se">\</span>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">event_id</span><span class="w"> </span><span class="err">found</span><span class="p">:</span><span class="w">
+</span><span class="p">{</span><span class="w">
     </span><span class="s2">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">#</span><span class="w"> </span><span class="err">event_id</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">found</span><span class="p">:</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint get event_id that satisfy given failure interval queries 
