@@ -861,12 +861,12 @@ response = requests.post('http://path_to_host/event/by_failure_intv')
 > The above command returns JSON structured like this:
 
 ```json
-# event_id found:
+# event_id found
 {
     "event_id": 16
 }
 
-# event_id not found:
+# event_id not found
 {
     "event_id": null
 }
@@ -935,6 +935,63 @@ and can be sorted by {fid, datetime_start}
 
 <!-- =============================================================== -->
 
+
+
+
+## Insert a Failure Interval Record
+
+```shell
+# using curl
+curl http://path_to_host/api/failure_interval \
+-H "Content-Type: application/json" \
+-d '{"event_id": 3,
+     "fid": 1,
+     "datetime_start": "2017-12-27T09:16:21",
+     "datetime_end": "2017-12-27T09:18:41"}'
+
+# using httpie
+http post http://path_to_host/api/failure_interval \
+          event_id=3 \
+          fid=1 \
+          datetime_start="2017-12-27T09:16:21" \
+          datetime_end="2017-12-27T09:18:41"
+```
+
+```python
+import requests
+response = requests.post('http://path_to_host/api/failure_interval', 
+                    json={'event_id':3, 'fid':1, 'datetime_start':'2017-12-27T09:16:21', 'datetime_end':'2017-12-27T09:18:41' )
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "datetime_end": "2017-12-06T13:13:13",
+  "datetime_start": "2017-12-06T12:12:12",
+  "event": null,
+  "event_id": 3,
+  "fi_id": 3,
+  "fid": 1
+}
+```
+
+This endpoint inserts a new failure_interval record.
+
+### HTTP Request
+`POST http://path_to_host/api/failure_interval`
+
+### JSON Parameters
+
+Parameter | Description
+--------- | -----------
+event_id | The primary id of the event
+fid | The primary id of the failure
+datetime_start | The interval start time
+datetime_end | The interval end time
+
+### HTTP Response
+`HTTP/1.0 201 CREATED`
 
 
 
